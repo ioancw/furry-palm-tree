@@ -101,7 +101,7 @@ class SMAVectorBacktester(object):
 if __name__ == '__main__':
     smabt = SMAVectorBacktester('DIS', 42, 252, '2009-12-31', '2016-12-31')
     print(smabt.run_strategy())
-    smabt.set_parameters(SMA1=20, SMA2=100)
-    print(smabt.run_strategy())
+    #smabt.set_parameters(SMA1=20, SMA2=100)
+    #print(smabt.run_strategy())
     smabt.plot_results()
     # print(smabt.optimize_parameters((1, 56, 2), (150, 300, 4)))
