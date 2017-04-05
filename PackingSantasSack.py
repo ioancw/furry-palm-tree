@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import time
+import numpy
 
 class Sack(object):
     def __init__(self):
@@ -23,8 +25,8 @@ def pack_sleigh(boxes, volume, sort_boxes, sort_sacks):
     for box in boxes:
         for sack in sleigh:
             if sack.sum + box <= volume:
-                sack.add_box(box)
-                break
+                sack.add_box(box)|"
+                brea
         else:
             sack = Sack()
             sack.add_box(box)
@@ -41,15 +43,8 @@ def sack_volume(sack):
 
 
 if __name__ == '__main__':
-    import random
-
-
     def pack(boxes, volume, sort, sort_sacks):
         sleigh = pack_sleigh(boxes, volume, sort, sort_sacks)
-
-        print(len(boxes), ' boxes packed into ', len(sleigh), ' sacks:')
-        # for sack in sleigh.sacks:
-        # print(sack)
         return len(sleigh)
 
 
@@ -57,15 +52,19 @@ if __name__ == '__main__':
     method1 = []
     method2 = []
     method3 = []
-    for simulation in range(1, 1001):
-        volume = 1000000
-        randomVolumeBoxes = [random.randint(1, volume) for i in range(90)]
+    startTime = time.time()
+    volume = 1000000
+    for simulation in range(1, 1000001):
+        randomVolumeBoxes = numpy.random.randint(1,volume,90)
         method1.append(pack(randomVolumeBoxes, volume, True, False))
-        method2.append(pack(randomVolumeBoxes, volume, True, True))
-        method3.append(pack(randomVolumeBoxes, volume, False, False))
-        print('--')
+        #method2.append(pack(randomVolumeBoxes, volume, True, True))
+        #method3.append(pack(randomVolumeBoxes, volume, False, False))
+        #print('--')
 
+    endTime = time.time()
+    elapsed = endTime - startTime
+    print('Time: ', elapsed)
     print('Simulated ', simulation)
     print('Method1 boxes:', sum(method1) / len(method1))
-    print('Method2 boxes:', sum(method2) / len(method2))
-    print('Method3 boxes:', sum(method3) / len(method3))
+    #print('Method2 boxes:', sum(method2) / len(method2))
+    #print('Method3 boxes:', sum(method3) / len(method3))
