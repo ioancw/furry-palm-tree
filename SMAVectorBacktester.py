@@ -7,6 +7,7 @@ Created on Mon Jan 16 21:22:37 2017
 """
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from pandas_datareader import data as web
 from scipy.optimize import brute
 
@@ -86,6 +87,13 @@ class SMAVectorBacktester(object):
     def plot_results(self):
         if self.results is None:
             print('No results to plot yet. Run a strategy.')
+        plt.style.use('ggplot')
+        title = 'Price and SMAs: %s | SMA1 = %d, SMA2 = %d' % (self.symbol, self.SMA1, self.SMA2)
+        self.results[['price', 'SMA1', 'SMA2']].plot(title=title, figsize=(10, 6))
+        
+        title = 'Signal: %s | SMA1 = %d, SMA2 = %d' % (self.symbol, self.SMA1, self.SMA2)
+        self.results[['position']].plot(title=title, figsize=(10, 6))
+            
         title = '%s | SMA1 = %d, SMA2 = %d' % (self.symbol, self.SMA1, self.SMA2)
         self.results[['creturns', 'cstrategy']].plot(title=title, figsize=(10, 6))
 
@@ -99,9 +107,9 @@ class SMAVectorBacktester(object):
 
 
 if __name__ == '__main__':
-    smabt = SMAVectorBacktester('DIS', 42, 252, '2009-12-31', '2016-12-31')
+    smabt = SMAVectorBacktester('AAPL', 42, 252, '2009-12-31', '2016-12-31')
     print(smabt.run_strategy())
     #smabt.set_parameters(SMA1=20, SMA2=100)
     #print(smabt.run_strategy())
     smabt.plot_results()
-    # print(smabt.optimize_parameters((1, 56, 2), (150, 300, 4)))
+    print(smabt.optimize_parameters((1, 56, 2), (150, 300, 4)))
