@@ -3,6 +3,7 @@
 import time
 import numpy
 
+
 class Sack(object):
     def __init__(self):
         self.boxes = []
@@ -25,8 +26,8 @@ def pack_sleigh(boxes, volume, sort_boxes, sort_sacks):
     for box in boxes:
         for sack in sleigh:
             if sack.sum + box <= volume:
-                sack.add_box(box)|"
-                brea
+                sack.add_box(box)
+                break
         else:
             sack = Sack()
             sack.add_box(box)
@@ -53,18 +54,14 @@ if __name__ == '__main__':
     method2 = []
     method3 = []
     startTime = time.time()
-    volume = 1000000
-    for simulation in range(1, 1000001):
-        randomVolumeBoxes = numpy.random.randint(1,volume,90)
-        method1.append(pack(randomVolumeBoxes, volume, True, False))
-        #method2.append(pack(randomVolumeBoxes, volume, True, True))
-        #method3.append(pack(randomVolumeBoxes, volume, False, False))
-        #print('--')
+    volume = 890
+    for simulation in range(1, volume):
+        randomVolumeBoxes = numpy.random.randint(1, volume, 90)
+        #method1.append(pack(randomVolumeBoxes, volume, True, False))
+        # print('--')
 
     endTime = time.time()
     elapsed = endTime - startTime
     print('Time: ', elapsed)
     print('Simulated ', simulation)
-    print('Method1 boxes:', sum(method1) / len(method1))
-    #print('Method2 boxes:', sum(method2) / len(method2))
-    #print('Method3 boxes:', sum(method3) / len(method3))
+

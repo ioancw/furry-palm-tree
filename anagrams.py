@@ -5,12 +5,9 @@ Created on Thu Jan 12 21:40:30 2017
 
 @author: ioanwilliams
 """
-from __future__ import print_function, division
-
 
 def sort_word(s):
-    t = list(s)
-    t.sort()
+    t = list(s).sort()
     t = ''.join(t)
     return t
 
@@ -45,18 +42,7 @@ def print_anagram_sets_in_order(d):
     for x in t:
         print(x)
 
-
-def filter_length(d, n):
-    res = {}
-    for word, anagrams in d.items():
-        if len(word) == n:
-            res[word] = anagrams
-    return res
-
-
 if __name__ == '__main__':
     anagram_map = all_anagrams('/Users/ioanwilliams/Documents/words.txt')
     print_anagram_sets_in_order(anagram_map)
 
-    # eight_letters = filter_length(anagram_map, 8)
-    # print_anagram_sets_in_order(eight_letters)
