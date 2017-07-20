@@ -25,8 +25,8 @@ def pack_sleigh(boxes, volume, sort_boxes, sort_sacks):
     for box in boxes:
         for sack in sleigh:
             if sack.sum + box <= volume:
-                sack.add_box(box)|"
-                brea
+                sack.add_box(box)
+                break
         else:
             sack = Sack()
             sack.add_box(box)
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     method3 = []
     startTime = time.time()
     volume = 1000000
-    for simulation in range(1, 1000001):
+    for simulation in range(1, 1000):
         randomVolumeBoxes = numpy.random.randint(1,volume,90)
         method1.append(pack(randomVolumeBoxes, volume, True, False))
         #method2.append(pack(randomVolumeBoxes, volume, True, True))

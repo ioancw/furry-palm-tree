@@ -20,23 +20,31 @@ class YahooDailyBarHandler(object):
         self.event_queue = event_queue
         self.continue_backtest = True
         self.get_data()
+        self.bar_stream = self.get_ticker_data()
 
     def get_data(self):
         ''' Retrieves and prepares the data.
         '''
-        raw = web.DataReader(self.symbol, data_source='yahoo',
-                             start=self.start, end=self.end)['Adj Close']
+        raw = web.DataReader(self.symbol, data_source='yahoo', start=self.start, end=self.end)['Adj Close']
         raw = pd.DataFrame(raw)
         raw.rename(columns={'Adj Close': 'price'}, inplace=True)
         raw['return'] = np.log(raw / raw.shift(1))
         self.data = raw.dropna()
 
+    def get_ticker_data(self):
+        return self.data.itertuples()
+
     def stream_next(self):
         """
         Place the next BarEvent onto the event queue.
         """
-        self.event_queue.put("Test Message")
-        self.continue_backtest = False
+        try:
+            row = next(self.bar_stream)
+        except StopIteration:
+            self.continue_backtest = False
+            return
+
+        self.event_queue.put(row)
 
 
 class TradingSession(object):
@@ -59,13 +67,12 @@ class TradingSession(object):
             try:
                 event = event_queue.get(False)
             except queue.Empty:
-                print('Next')
                 self.price_handler.stream_next()
             else:
                 if event is not None:
                     print(event)
+                    #If backtesting then call calculate signals method on strategy object
 
 event_queue = queue.Queue()
-trading_session = TradingSession(event_queue, '2010-01-01','2015-01-01','DIS')
+trading_session = TradingSession(event_queue, '2010-01-01','2011-01-01','DIS')
 trading_session.start_trading()
-        
