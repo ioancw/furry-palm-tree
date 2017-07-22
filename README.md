@@ -1,4 +1,4 @@
 # furry-palm-tree
 Python stuff
 
-Collection of my python files.
+General collection of my python files and machine learning notebooks.
