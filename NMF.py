@@ -6,7 +6,6 @@ Created on Mon Jul 17 12:25:37 2017
 """
 from nltk.stem.porter import PorterStemmer
 import re
-import string
 import math
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF, LatentDirichletAllocation
@@ -57,27 +56,6 @@ def display_topics2(H, W, feature_names, documents, no_top_words, no_top_documen
         
         for doc_index in top_doc_indices:
             print(documents[doc_index])
-
-
-#my_file = open('m:\emails.txt','w')
-#my_file.close()
-#
-#import win32com.client
-#
-#outlook = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
-#
-#inbox = outlook.GetDefaultFolder(6)
-#
-#messages = inbox.Items
-#
-#messages = [message.subject for message in messages]
-#
-#messages_set = set(messages)
-#
-#for m in messages_set:
-#    my_file.write("%s\n" % m)
-#
-#my_file.close()
 
 documents = [line.strip() for line in open('m:\Churchill.txt')]
 
