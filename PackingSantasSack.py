@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import time
 import numpy
 
@@ -48,20 +46,16 @@ if __name__ == '__main__':
         sleigh = pack_sleigh(boxes, volume, sort, sort_sacks)
         return len(sleigh)
 
-
     print('--')
     method1 = []
-    method2 = []
-    method3 = []
     startTime = time.time()
-    volume = 890
+    volume = 1000001
     for simulation in range(1, volume):
         randomVolumeBoxes = numpy.random.randint(1, volume, 90)
-        #method1.append(pack(randomVolumeBoxes, volume, True, False))
-        # print('--')
+        method1.append(pack(randomVolumeBoxes, volume, True, False))
 
     endTime = time.time()
     elapsed = endTime - startTime
     print('Time: ', elapsed)
     print('Simulated ', simulation)
-
+    print('Method1 boxes', sum(method1)/len(method1))

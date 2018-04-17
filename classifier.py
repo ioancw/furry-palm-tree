@@ -86,7 +86,8 @@ class NaiveBayes(Classifier):
 
         # Multiply the probabilities of all the features together
         p = 1
-        for f in features: p *= self.weighted_prob(f, cat, self.f_prob)
+        for f in features:
+            p *= self.weighted_prob(f, cat, self.f_prob)
         return p
 
     def prob(self, item, cat):
@@ -98,7 +99,8 @@ class NaiveBayes(Classifier):
         self.thresholds[cat] = t
 
     def getthreshold(self, cat):
-        if cat not in self.thresholds: return 1.0
+        if cat not in self.thresholds:
+            return 1.0
         return self.thresholds[cat]
 
     def classify(self, item, default=None):
@@ -113,8 +115,10 @@ class NaiveBayes(Classifier):
 
         # Make sure the probability exceeds threshold*next best
         for cat in probs:
-            if cat == best: continue
-            if probs[cat] * self.getthreshold(best) > probs[best]: return default
+            if cat == best:
+                continue
+            if probs[cat] * self.getthreshold(best) > probs[best]:
+                return default
         return best
 
 

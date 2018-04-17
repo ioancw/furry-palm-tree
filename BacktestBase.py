@@ -94,10 +94,10 @@ class BacktestBase(object):
         date, price = self.get_date_price(bar)
         if units is None:
             units = math.floor(amount / price)
-        #reduce current cashbalance by number of units bought and transaction
-        #cost
+        # reduce current cashbalance by number of units bought and transaction
+        # cost
         self.amount -= (units * price) * (1 + self.ptc) + self.ftc
-        #number of shares
+        # number of shares
         self.units += units
         self.trades += 1
         if self.verbose:
@@ -133,6 +133,7 @@ class BacktestBase(object):
         print('Net Performance [%%] %13.2f' % ((self.amount - self._amount) /
                                                self._amount * 100))
         print('=' * 55)
+
 
 if __name__ == '__main__':
     bb = BacktestBase('DIS', '2010-1-1', '2016-10-31', 10000)

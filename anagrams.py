@@ -42,7 +42,7 @@ def print_anagram_sets_in_order(d):
     for x in t:
         print(x)
 
+
 if __name__ == '__main__':
     anagram_map = all_anagrams('/Users/ioanwilliams/Documents/words.txt')
     print_anagram_sets_in_order(anagram_map)
-

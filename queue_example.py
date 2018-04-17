@@ -8,6 +8,7 @@ Created on Wed Apr 12 21:20:50 2017
 
 import queue as queue
 
+
 def event_handler(event_queue):
     while event_queue.qsize() >= 1:
         try:
@@ -18,9 +19,11 @@ def event_handler(event_queue):
             if event is not None:
                 print(event)
 
+
 def add_events(event_queue):
     for i in range(10):
         event_queue.put("message " + str(i))
+
 
 event_queue = queue.Queue()
 event_queue.put("test")
