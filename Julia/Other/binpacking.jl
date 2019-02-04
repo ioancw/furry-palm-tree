@@ -1,6 +1,6 @@
 module SackPacking
-
-  type Sack
+using Statistics
+  mutable struct Sack
       sum::Int64
       boxes::Vector{Int64}
   end
@@ -43,5 +43,5 @@ module SackPacking
   end
 
   println("Simulation: ", simulation)
-  println("Mean Sim1: ", mean(sim1))
+  println("Mean Sim1: ", Statistics.mean(sim1))
 end
