@@ -101,6 +101,7 @@ class Node:
         self._kwargs_to_pass.update(self._data_provided)
 
     def run_with_loaded_inputs(self):
+        #basically calls the 'function'as a callable
         return self(self._data_to_pass, **self._kwargs_to_pass)
 
 
@@ -232,33 +233,37 @@ class Graph:
 
 
 if __name__ == "__main__":
+    #graph = Graph()
+
+    # def f_sum(a, b):
+        # return a + b
+
+    # def f_minus(a, b):
+        # return a - b
+
+    # def f_divby10(c):
+        # return c / 10.0
+
+    #graph.add_node(f_sum, inputs=['a', 'b'], outputs=['c'])
+    #graph.add_node(f_minus, inputs=['d', 'a'], outputs=['e'])
+    #graph.add_node(f_divby10, inputs=['c'], outputs=['d'])
+
+    #res = graph.calculate(data={'a': 2, 'b': 3})
+    # print(res)
+
     graph = Graph()
 
-    def f_sum(a, b):
-        return a + b
-
-    def f_minus(a, b):
-        return a - b
-
-    def f_divby10(c):
-        return c / 10.0
-
-    graph.add_node(f_sum, inputs=['a', 'b'], outputs=['c'])
-    graph.add_node(f_minus, inputs=['d', 'a'], outputs=['e'])
-    graph.add_node(f_divby10, inputs=['c'], outputs=['d'])
-
-    res = graph.calculate(data={'a': 2, 'b': 3})
-    print(res)
-
-    graph = Graph()
-
-    @graph.register(inputs=['x', 'y'], outputs=['z'])
+    @graph.register(inputs=['x', 'y'], outputs=['f_add'])
     def f_add(a, b):
         return a + b
 
-    @graph.register(inputs=['z'], outputs=['c'])
+    @graph.register(inputs=['f_add'], outputs=['c'])
     def f_sq(z):
         return z*z
+
+    nodes = graph._nodes
+    for node in nodes:
+        print(node)
 
     res = graph.calculate(data={'x': 2, 'y': 3})
     print(res)
