@@ -23,10 +23,21 @@ function getEigenDecompInverse(J, tol)
 end
 
 #J = readcsv("/Users/ioanwilliams/Downloads/USDSmallMatrix.csv")
-J = readcsv("/Users/ioanwilliams/Downloads/matrix-large.csv")
+J = readcsv("/Users/ioanwilliams/github/furry-palm-tree/Julia/Other/matrix-large.csv")
 
 J_inv = pinv(J, 1e-4)
 J_inv_e = getEigenDecompInverse(J, 1e-4)
 J_inv_svd = getInverseFromSVD(J, 1e-4)
 
 TwentyYr = J_inv[:,28]
+
+using CSV
+using LinearAlgebra
+fileName = "/Users/ioanwilliams/github/furry-palm-tree/Julia/Other/matrix-large.csv"
+myfile = CSV.read(fileName) |> Matrix
+J_inv = pinv(myfile)
+
+x = readcsv(fileName)
+
+y =Matrix(myfile)
+J_inv = pinv(y)

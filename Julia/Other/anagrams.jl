@@ -33,3 +33,17 @@ sort!(sorted, by = x -> x[1])
 for (a,b) in sorted
   println(a,": ",join(b,","))
 end
+
+x = 1 + 2
+
+function add(n)
+  return n + 10
+end
+
+2 |> add
+
+function mult(a, b)
+    return a + b
+end
+
+2 |> mult(10, _)
