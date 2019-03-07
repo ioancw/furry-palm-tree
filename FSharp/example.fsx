@@ -15,3 +15,6 @@ let knap items maxW=
                   printfn "Take %0.2f kg of %s\nTotal value of swag is %0.2f" (maxW - n) name (a + (float(value)/weight)*(maxW - n))
       | []   -> printfn "Everything taken! Total value of swag is £%0.2f; Total weight of bag is %0.2fkg" a n
   take(0.0, items, 0.0)
+
+
+do knap items 20.0
