@@ -76,5 +76,7 @@ empty
 |> snd
 |> printfn "Parsed graph: %A"                
 
+let add x y = x + y
 
+empty |> addVertex "N1" |> addVertex "N2"
 
