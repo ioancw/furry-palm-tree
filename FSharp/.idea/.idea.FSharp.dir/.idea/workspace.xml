@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4bd741c8-2183-4931-a528-29ae38b04ac0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/VS Projects/async/Class.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VS Projects/async/agent.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dagcell.fsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/21_card_trick.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/21_card_trick.fsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cipher-1.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/cipher-1.fsx" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/learnfsharp.fs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dagcell.fsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-474">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <marker date="1566245480785" expanded="true" signature="26:60" ph="..." />
+                <marker date="1566245480785" expanded="true" signature="71:277" ph="= private { ..." />
+                <marker date="1566245480785" expanded="true" signature="289:4137" ph=" = ..." />
+                <marker date="1566245480785" expanded="true" signature="318:437" ph=" = ..." />
+                <marker date="1566245480785" expanded="true" signature="579:709" ph=" = { ..." />
+                <marker date="1566245480785" expanded="true" signature="744:880" ph=" : Dag * Cell&lt;'a, Input&gt; = ..." />
+                <marker date="1566245480785" expanded="true" signature="779:880" ph="{ d with ..." />
+                <marker date="1566245480785" expanded="true" signature="932:974" ph=" : 'a = ..." />
+                <marker date="1566245480785" expanded="true" signature="1034:2080" ph=" : Dag = ..." />
+                <marker date="1566245480785" expanded="true" signature="1084:2080" ph=" then d ..." />
+                <marker date="1566245480785" expanded="true" signature="1131:1486" ph=" = ..." />
+                <marker date="1566245480785" expanded="true" signature="1168:1414" ph=") (inputs,calcInputs) -&gt; ..." />
+                <marker date="1566245480785" expanded="true" signature="1312:1414" ph=" then ..." />
+                <marker date="1566245480785" expanded="true" signature="1317:1358" ph=" ..." />
+                <marker date="1566245480785" expanded="true" signature="1618:2080" ph=" then { d with InputValues = inputValues } ..." />
+                <marker date="1566245480785" expanded="true" signature="1766:1921" ph=" = { ..." />
+                <marker date="1566245480785" expanded="true" signature="1953:2031" ph=" -&gt; ..." />
+                <marker date="1566245480785" expanded="true" signature="2139:2196" ph=" : Task&lt;'a&gt; = ..." />
+                <marker date="1566245480785" expanded="true" signature="2262:2474" ph=" : bool = ..." />
+                <marker date="1566245480785" expanded="true" signature="2312:2474" ph=" then ..." />
+                <marker date="1566245480785" expanded="true" signature="2488:2603" ph="Builder = private { ..." />
+                <marker date="1566245480785" expanded="true" signature="2637:2747" ph=" = { ..." />
+                <marker date="1566245480785" expanded="true" signature="2825:3639" ph=" = ..." />
+                <marker date="1566245480785" expanded="true" signature="2869:2929" ph=" = ..." />
+                <marker date="1566245480785" expanded="true" signature="2999:3638" ph=" ..." />
+                <marker date="1566245480785" expanded="true" signature="3076:3158" ph=" then inI, Set.add i inC ..." />
+                <marker date="1566245480785" expanded="true" signature="3215:3629" ph=" then ..." />
+                <marker date="1566245480785" expanded="true" signature="3246:3465" ph=" -&gt; ..." />
+                <marker date="1566245480785" expanded="true" signature="3512:3629" ph=" -&gt; ..." />
+                <marker date="1566245480785" expanded="true" signature="3556:3629" ph=" (fun f -&gt; ..." />
+                <marker date="1566245480785" expanded="true" signature="3706:4137" ph=" = ..." />
+                <marker date="1566245480785" expanded="true" signature="3751:3983" ph=" = { ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/matrix.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/dagcell.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CSBiol graph.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/binPacking.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/learnfsharp.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/anagrams.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/observer.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/99 Problems in FSharp (from Ocaml).fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Packing.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/testgraph.fsx" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/anagrams.fsx" />
+        <option value="$PROJECT_DIR$/dagcell.fsx" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/.idea.FSharp.dir/.idea/indexLayout.xml" />
+        <option value="$PROJECT_DIR$/.idea/.idea.FSharp.dir/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="width" value="834" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="FileSystemExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="FSharp" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="Fsi" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4bd741c8-2183-4931-a528-29ae38b04ac0" name="Default Changelist" comment="" />
+      <created>1565295978584</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1565295978584</updated>
+      <workItem from="1565295980837" duration="3778000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3778000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24908425" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" order="0" />
+      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Unit Tests" order="4" />
+      <window_info anchor="bottom" id="Terminal" order="5" />
+      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" weight="0.3292683" />
+      <window_info anchor="bottom" id="Message" order="7" />
+      <window_info anchor="bottom" id="Find" order="8" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="12" weight="0.3292683" />
+      <window_info anchor="right" id="Errors In Solution" order="0" weight="0.32967034" />
+      <window_info anchor="right" id="Database" order="1" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="2" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="3" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="4" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="5" weight="0.25" />
+      <window_info anchor="right" id="Run" order="6" weight="0.42429793" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/binPacking.fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1549828141995" expanded="false" signature="818:860" ph="..." />
+            <marker date="1549828141995" expanded="true" signature="888:1425" ph="=  ..." />
+            <marker date="1549828141995" expanded="true" signature="984:1384" ph=" -&gt; ..." />
+            <marker date="1549828141995" expanded="true" signature="1148:1384" ph=" ..." />
+            <marker date="1549828141995" expanded="true" signature="1248:1384" ph=" -&gt;  ..." />
+            <marker date="1549828141995" expanded="true" signature="1458:1540" ph=" = ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matrix.fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1549320970472" expanded="true" signature="4:243" ph="@&quot;/Users/ioanwilliams/Projects/Matricies/packages/MathNet.Numerics.4.7.0/lib/net40/&quot; ..." />
+            <marker date="1549320970472" expanded="false" signature="250:302" ph="..." />
+            <marker date="1549320970472" expanded="true" signature="1024:1116" ph=" =  ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/observer.fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1550998283612" expanded="false" signature="5:33" ph="..." />
+            <marker date="1550998283612" expanded="true" signature="35:125" ph="/// create a timer and register an event handler,  ..." />
+            <marker date="1550998283612" expanded="true" signature="168:559" ph=" = ..." />
+            <marker date="1550998283612" expanded="true" signature="389:558" ph=" ..." />
+            <marker date="1550998283612" expanded="true" signature="854:1252" ph=" = ..." />
+            <marker date="1550998283612" expanded="true" signature="1090:1182" ph=" = async { ..." />
+            <marker date="1550998283612" expanded="true" signature="1375:1460" ph="// register that everytime something happens on the  ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/99 Problems in FSharp (from Ocaml).fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1818">
+          <folding>
+            <marker date="1547419314775" expanded="true" signature="103:199" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="129:199" ph=" ..." />
+            <marker date="1547419314775" expanded="true" signature="214:296" ph=" = function ..." />
+            <marker date="1547419314775" expanded="true" signature="439:526" ph=" = function ..." />
+            <marker date="1547419314775" expanded="true" signature="649:763" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="677:763" ph=" ..." />
+            <marker date="1547419314775" expanded="true" signature="900:975" ph=" = function ..." />
+            <marker date="1547419314775" expanded="true" signature="977:1064" ph="//with tail recursion (i.e. using an accumulator) ..." />
+            <marker date="1547419314775" expanded="true" signature="1085:1243" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="1119:1220" ph=" = ..." />
+            <marker date="1547419314775" expanded="true" signature="1147:1220" ph=" ..." />
+            <marker date="1547419314775" expanded="false" signature="1353:1383" ph="..." />
+            <marker date="1547419314775" expanded="true" signature="1419:1471" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="1576:1611" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="1688:1738" ph="node =  ..." />
+            <marker date="1547419314775" expanded="true" signature="1700:1738" ph="| One of 'a ..." />
+            <marker date="1547419314775" expanded="true" signature="1756:1914" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="1779:1883" ph=" = function ..." />
+            <marker date="1547419314775" expanded="true" signature="2067:2165" ph=" = function ..." />
+            <marker date="1547419314775" expanded="true" signature="2185:2297" ph=" = function ..." />
+            <marker date="1547419314775" expanded="true" signature="2396:2650" ph=" = ..." />
+            <marker date="1547419314775" expanded="true" signature="2426:2616" ph=" = function ..." />
+            <marker date="1547419314775" expanded="true" signature="2518:2616" ph=" -&gt; ..." />
+            <marker date="1547419314775" expanded="true" signature="2736:2883" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="2757:2851" ph=" = function ..." />
+            <marker date="1547419314775" expanded="true" signature="2999:3061" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="3222:3279" ph="Encoding =  ..." />
+            <marker date="1547419314775" expanded="true" signature="3240:3279" ph="Multiple of int * 'a ..." />
+            <marker date="1547419314775" expanded="true" signature="3296:3553" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="3398:3551" ph=") -&gt;  ..." />
+            <marker date="1547419314775" expanded="true" signature="3448:3551" ph=" ..." />
+            <marker date="1547419314775" expanded="true" signature="3569:3726" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="3658:3725" ph=") -&gt; ..." />
+            <marker date="1547419314775" expanded="true" signature="3848:3980" ph=" = ..." />
+            <marker date="1547419314775" expanded="true" signature="3865:3950" ph=" = function ..." />
+            <marker date="1547419314775" expanded="true" signature="4105:4157" ph="//14 duplicate elements of list ..." />
+            <marker date="1547419314775" expanded="true" signature="4175:4239" ph=" = function ..." />
+            <marker date="1547419314775" expanded="true" signature="4331:4432" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="4350:4421" ph=" = function ..." />
+            <marker date="1547419314775" expanded="true" signature="4588:4702" ph=" =  ..." />
+            <marker date="1547419314775" expanded="true" signature="4616:4702" ph=" ..." />
+            <marker date="1547419314775" expanded="true" signature="4720:4847" ph=" = ..." />
+            <marker date="1547419314775" expanded="true" signature="4740:4832" ph=" = function ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/anagrams.fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="44" lean-forward="true" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+          <folding>
+            <marker date="1567109942536" expanded="true" signature="5:46" ph="..." />
+            <marker date="1567109942536" expanded="true" signature="89:590" ph=" =  ..." />
+            <marker date="1567109942536" expanded="true" signature="198:557" ph=" -&gt; ..." />
+            <marker date="1567109942536" expanded="true" signature="322:557" ph="  ..." />
+            <marker date="1567109942536" expanded="true" signature="639:739" ph=" =  ..." />
+            <marker date="1567109942536" expanded="true" signature="659:739" ph=" ..." />
+            <marker date="1567109942536" expanded="true" signature="1033:1338" ph=" =  ..." />
+            <marker date="1567109942536" expanded="true" signature="1155:1337" ph=" -&gt; ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Packing.fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1549222225609" expanded="true" signature="23:168" ph=") =  ..." />
+            <marker date="1549222225609" expanded="true" signature="93:120" ph=" =  ..." />
+            <marker date="1549222225609" expanded="true" signature="140:168" ph=" =  ..." />
+            <marker date="1549222225609" expanded="true" signature="197:1042" ph="=  ..." />
+            <marker date="1549222225609" expanded="true" signature="301:999" ph=" -&gt;   ..." />
+            <marker date="1549222225609" expanded="true" signature="426:717" ph=" = sleigh |&gt; Seq.tryPick (fun sack -&gt;  ..." />
+            <marker date="1549222225609" expanded="true" signature="560:716" ph="  ..." />
+            <marker date="1549222225609" expanded="true" signature="760:999" ph=" ..." />
+            <marker date="1549222225609" expanded="true" signature="862:999" ph=" -&gt; let sack = Sack() //otherwise open sack ..." />
+            <marker date="1549222225609" expanded="true" signature="1072:1584" ph="=  ..." />
+            <marker date="1549222225609" expanded="true" signature="1193:1542" ph=" -&gt;  //work out if box is to be added to existing sack or new one ..." />
+            <marker date="1549222225609" expanded="true" signature="1399:1542" ph=" ..." />
+            <marker date="1549222225609" expanded="true" signature="1651:1733" ph=" = ..." />
+            <marker date="1549222225609" expanded="true" signature="1753:2016" ph="//let simulation = List.init vol (fun _ -&gt; (packSleigh (randomBoxes 1 vol 90) vol)) //fast ..." />
+            <marker date="1549222225609" expanded="true" signature="2018:2160" ph="//Real: 00:01:50.712, CPU: 00:01:50.798, GC gen0: 26176, gen1: 9 ..." />
+            <marker date="1549222225609" expanded="true" signature="2173:2922" ph=" =   [|643088; 748498; 392790; 734652; 288471; 101166; 202038; 122564; 266151; ..." />
+            <marker date="1549222225609" expanded="true" signature="2924:3161" ph="//let averageSimulation2 = Seq.fold (fun acc _ -&gt; (packSleigh (randomBoxes 1 vol 90) vol) + acc) 0 {1 .. vol} ..." />
+            <marker date="1549222225609" expanded="true" signature="3479:3560" ph="//packSleigh boxesToPack 10 ..." />
+            <marker date="1549222225609" expanded="true" signature="3562:3831" ph="//let packedSleigh = packSleigh boxesToPack 10 ..." />
+            <marker date="1549222225609" expanded="true" signature="3833:3946" ph="//what about the random function, we essentially want 90 random numbers between 1 and 1,000,000 ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testgraph.fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1559980001411" expanded="true" signature="941:1137" ph=" : (int * Graph&lt;'V, _&gt;) =  ..." />
+            <marker date="1559980001411" expanded="true" signature="1205:1494" ph=" : (int * Graph&lt;'V, 'E&gt;) =  ..." />
+            <marker date="1559980001411" expanded="true" signature="1327:1493" ph="id,  ..." />
+            <marker date="1559980001411" expanded="true" signature="1341:1492" ph="id + 1,  ..." />
+            <marker date="1559980001411" expanded="true" signature="1381:1491" ph=" -&gt; ..." />
+            <marker date="1559980001411" expanded="true" signature="1527:1564" ph=" =  ..." />
+            <marker date="1559980001411" expanded="true" signature="1613:1763" ph=" : Graph&lt;_,_&gt; =  ..." />
+            <marker date="1559980001411" expanded="true" signature="1807:2210" ph=" : Graph&lt;_,_&gt; =  ..." />
+            <marker date="1559980001411" expanded="true" signature="1871:2209" ph="next, s |&gt; ([] |&gt; List.fold (fun s' (v, a) -&gt;  ..." />
+            <marker date="1559980001411" expanded="true" signature="1957:2207" ph=" then s' ..." />
+            <marker date="1559980001411" expanded="true" signature="2277:2371" ph=") -&gt;  ..." />
+            <marker date="1559980001411" expanded="true" signature="2329:2370" ph=") -&gt;  ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSBiol graph.fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1554559514063" expanded="true" signature="68:127" ph="//verticies are nodes ..." />
+            <marker date="1554559514063" expanded="true" signature="269:287" ph=" = Map&lt;'Vertex,  ..." />
+            <marker date="1554559514063" expanded="true" signature="303:486" ph=" =  ..." />
+            <marker date="1554559514063" expanded="true" signature="399:486" ph=" ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learnfsharp.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dagcell.fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-474">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <marker date="1566245480785" expanded="true" signature="26:60" ph="..." />
+            <marker date="1566245480785" expanded="true" signature="71:277" ph="= private { ..." />
+            <marker date="1566245480785" expanded="true" signature="289:4137" ph=" = ..." />
+            <marker date="1566245480785" expanded="true" signature="318:437" ph=" = ..." />
+            <marker date="1566245480785" expanded="true" signature="579:709" ph=" = { ..." />
+            <marker date="1566245480785" expanded="true" signature="744:880" ph=" : Dag * Cell&lt;'a, Input&gt; = ..." />
+            <marker date="1566245480785" expanded="true" signature="779:880" ph="{ d with ..." />
+            <marker date="1566245480785" expanded="true" signature="932:974" ph=" : 'a = ..." />
+            <marker date="1566245480785" expanded="true" signature="1034:2080" ph=" : Dag = ..." />
+            <marker date="1566245480785" expanded="true" signature="1084:2080" ph=" then d ..." />
+            <marker date="1566245480785" expanded="true" signature="1131:1486" ph=" = ..." />
+            <marker date="1566245480785" expanded="true" signature="1168:1414" ph=") (inputs,calcInputs) -&gt; ..." />
+            <marker date="1566245480785" expanded="true" signature="1312:1414" ph=" then ..." />
+            <marker date="1566245480785" expanded="true" signature="1317:1358" ph=" ..." />
+            <marker date="1566245480785" expanded="true" signature="1618:2080" ph=" then { d with InputValues = inputValues } ..." />
+            <marker date="1566245480785" expanded="true" signature="1766:1921" ph=" = { ..." />
+            <marker date="1566245480785" expanded="true" signature="1953:2031" ph=" -&gt; ..." />
+            <marker date="1566245480785" expanded="true" signature="2139:2196" ph=" : Task&lt;'a&gt; = ..." />
+            <marker date="1566245480785" expanded="true" signature="2262:2474" ph=" : bool = ..." />
+            <marker date="1566245480785" expanded="true" signature="2312:2474" ph=" then ..." />
+            <marker date="1566245480785" expanded="true" signature="2488:2603" ph="Builder = private { ..." />
+            <marker date="1566245480785" expanded="true" signature="2637:2747" ph=" = { ..." />
+            <marker date="1566245480785" expanded="true" signature="2825:3639" ph=" = ..." />
+            <marker date="1566245480785" expanded="true" signature="2869:2929" ph=" = ..." />
+            <marker date="1566245480785" expanded="true" signature="2999:3638" ph=" ..." />
+            <marker date="1566245480785" expanded="true" signature="3076:3158" ph=" then inI, Set.add i inC ..." />
+            <marker date="1566245480785" expanded="true" signature="3215:3629" ph=" then ..." />
+            <marker date="1566245480785" expanded="true" signature="3246:3465" ph=" -&gt; ..." />
+            <marker date="1566245480785" expanded="true" signature="3512:3629" ph=" -&gt; ..." />
+            <marker date="1566245480785" expanded="true" signature="3556:3629" ph=" (fun f -&gt; ..." />
+            <marker date="1566245480785" expanded="true" signature="3706:4137" ph=" = ..." />
+            <marker date="1566245480785" expanded="true" signature="3751:3983" ph=" = { ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

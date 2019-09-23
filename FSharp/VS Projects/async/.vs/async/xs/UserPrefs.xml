@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{A48E6573-C858-4142-B6C8-DB733C241FC0}|Default">
+  <MonoDevelop.Ide.ItemProperties.async PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Class.fs">
+    <Files>
+      <File FileName="Program.fs" Line="9" Column="1" />
+      <File FileName="agent.fs" Line="1" Column="1" />
+      <File FileName="Class.fs" Line="39" Column="25" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="async" expanded="True">
+            <Node name="async" expanded="True">
+              <Node name="Class.fs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -5,12 +5,13 @@ let cipherText = "MHILY LZA ZBHL XBPZXBL MVYABUHL HWWPBZ JSHBKPBZ JHLJBZ KPJABT 
 let alphabet = ['a'..'z']
 let shiftAlphabet = ['A'..'Z']
 
-let rotateListBy (offset : int) (input : char list) = input.[offset..] @ input.[..offset-1]
+let rotateListBy (offset: int) (input: char list) = 
+    input.[offset..] @ input.[..offset-1]
 
-let rec convertToString (l) = 
-    match l with
+let rec convertListToString list = 
+    match list with
     | [] -> ""
-    | head :: tail -> head.ToString() + convertToString tail
+    | head :: tail -> head.ToString() + convertListToString tail
 
 let allShifts = 
     [
@@ -24,10 +25,9 @@ allShifts
 |> List.iter (fun map -> 
                 cipherText
                 |> Seq.map (fun x -> 
-                                let result = Map.tryFind x map
-                                match result with
+                                match (Map.tryFind x map) with
                                 | Some y -> y
                                 | None -> ' ')
                 |> Seq.toList
-                |> convertToString
+                |> convertListToString
                 |> printfn "%s")

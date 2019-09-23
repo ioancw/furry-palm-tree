@@ -1,0 +1,507 @@
+Initial model: {Count = 0; Step = 1; TimerOn = false;}
+View, model = {Count = 0; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-1514953560
+Message: Increment
+Updated model: {Count = 1; Step = 1; TimerOn = false;}
+View, model = {Count = 1; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@564119278
+Message: Decrement
+Updated model: {Count = 0; Step = 1; TimerOn = false;}
+View, model = {Count = 0; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@2096484623
+Message: Increment
+Updated model: {Count = 1; Step = 1; TimerOn = false;}
+View, model = {Count = 1; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-539772252
+Message: Increment
+Updated model: {Count = 2; Step = 1; TimerOn = false;}
+View, model = {Count = 2; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-373666841
+Message: Increment
+Updated model: {Count = 3; Step = 1; TimerOn = false;}
+View, model = {Count = 3; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-24713696
+Message: Increment
+Updated model: {Count = 4; Step = 1; TimerOn = false;}
+View, model = {Count = 4; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-210963993
+Message: Increment
+Updated model: {Count = 5; Step = 1; TimerOn = false;}
+View, model = {Count = 5; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@137989152
+Message: Increment
+Updated model: {Count = 6; Step = 1; TimerOn = false;}
+View, model = {Count = 6; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-48261145
+Message: Increment
+Updated model: {Count = 7; Step = 1; TimerOn = false;}
+View, model = {Count = 7; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@290495858
+Message: Increment
+Updated model: {Count = 8; Step = 1; TimerOn = false;}
+View, model = {Count = 8; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@1303680984
+Message: Increment
+Updated model: {Count = 9; Step = 1; TimerOn = false;}
+View, model = {Count = 9; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-1515778220
+Message: Increment
+Updated model: {Count = 10; Step = 1; TimerOn = false;}
+View, model = {Count = 10; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@1931390261
+Message: Increment
+Updated model: {Count = 11; Step = 1; TimerOn = false;}
+View, model = {Count = 11; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-374092355
+Message: Increment
+Updated model: {Count = 12; Step = 1; TimerOn = false;}
+View, model = {Count = 12; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@31363448
+Message: Decrement
+Updated model: {Count = 11; Step = 1; TimerOn = false;}
+View, model = {Count = 11; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-154886849
+Message: Decrement
+Updated model: {Count = 10; Step = 1; TimerOn = false;}
+View, model = {Count = 10; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-2139791348
+Message: Decrement
+Updated model: {Count = 9; Step = 1; TimerOn = false;}
+View, model = {Count = 9; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-1473403704
+Message: Decrement
+Updated model: {Count = 8; Step = 1; TimerOn = false;}
+View, model = {Count = 8; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@649902453
+Message: Decrement
+Updated model: {Count = 7; Step = 1; TimerOn = false;}
+View, model = {Count = 7; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@353790458
+Message: Decrement
+Updated model: {Count = 6; Step = 1; TimerOn = false;}
+View, model = {Count = 6; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-1860268291
+Message: Decrement
+Updated model: {Count = 5; Step = 1; TimerOn = false;}
+View, model = {Count = 5; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@516493306
+Message: Decrement
+Updated model: {Count = 4; Step = 1; TimerOn = false;}
+View, model = {Count = 4; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-1697565443
+Message: Decrement
+Updated model: {Count = 3; Step = 1; TimerOn = false;}
+View, model = {Count = 3; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@679196154
+Message: Decrement
+Updated model: {Count = 2; Step = 1; TimerOn = false;}
+View, model = {Count = 2; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-1534862595
+Message: Decrement
+Updated model: {Count = 1; Step = 1; TimerOn = false;}
+View, model = {Count = 1; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@841899002
+Message: Decrement
+Updated model: {Count = 0; Step = 1; TimerOn = false;}
+View, model = {Count = 0; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-1372159747
+Message: SetStep 1
+Updated model: {Count = 0; Step = 1; TimerOn = false;}
+View, model = {Count = 0; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-909777409
+Message: SetStep 1
+Updated model: {Count = 0; Step = 1; TimerOn = false;}
+View, model = {Count = 0; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@1911952928
+Message: SetStep 1
+Updated model: {Count = 0; Step = 1; TimerOn = false;}
+View, model = {Count = 0; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@1723748178
+Message: SetStep 1
+Updated model: {Count = 0; Step = 1; TimerOn = false;}
+View, model = {Count = 0; Step = 1; TimerOn = false;}
+View result: ContentPage(...)@-271352463
+Message: SetStep 2
+Updated model: {Count = 0; Step = 2; TimerOn = false;}
+View, model = {Count = 0; Step = 2; TimerOn = false;}
+View result: ContentPage(...)@-459557213
+Message: SetStep 2
+Updated model: {Count = 0; Step = 2; TimerOn = false;}
+View, model = {Count = 0; Step = 2; TimerOn = false;}
+View result: ContentPage(...)@2127920803
+Message: SetStep 2
+Updated model: {Count = 0; Step = 2; TimerOn = false;}
+View, model = {Count = 0; Step = 2; TimerOn = false;}
+View result: ContentPage(...)@-733157539
+Message: SetStep 2
+Updated model: {Count = 0; Step = 2; TimerOn = false;}
+View, model = {Count = 0; Step = 2; TimerOn = false;}
+View result: ContentPage(...)@-1287057757
+Message: SetStep 2
+Updated model: {Count = 0; Step = 2; TimerOn = false;}
+View, model = {Count = 0; Step = 2; TimerOn = false;}
+View result: ContentPage(...)@-2080308367
+Message: SetStep 2
+Updated model: {Count = 0; Step = 2; TimerOn = false;}
+View, model = {Count = 0; Step = 2; TimerOn = false;}
+View result: ContentPage(...)@2026454179
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@1233203569
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@1026560988
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@465608246
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@998124951
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@204874341
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@16669591
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@-1128936727
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@-1548250180
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@-609545388
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@1294802661
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@509793740
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@1351976594
+Message: SetStep 3
+Updated model: {Count = 0; Step = 3; TimerOn = false;}
+View, model = {Count = 0; Step = 3; TimerOn = false;}
+View result: ContentPage(...)@1516127552
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@722876942
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@-1336968046
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@1602865678
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@1414660928
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@621410318
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@433205568
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@-1274283712
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@-1110132754
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@-1903383364
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@-2091588114
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@1410128572
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@1221923822
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@428673212
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@240468462
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@-905137856
+Message: SetStep 4
+Updated model: {Count = 0; Step = 4; TimerOn = false;}
+View, model = {Count = 0; Step = 4; TimerOn = false;}
+View result: ContentPage(...)@-740986898
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1534237508
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@700884800
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-333670655
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@200459092
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1287090409
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1451241367
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@657990757
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@469786007
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-576154755
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-412003797
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1936645343
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@363221312
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-782385006
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-618234048
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1411484658
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@261754688
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-883851630
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-719700672
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1512951282
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@2031928302
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1238677692
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1050472942
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@257222332
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@69017582
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1076588736
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-912437778
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1705688388
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1893893138
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1607823548
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1419618798
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@626368188
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1115443582
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1424314449
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@870414231
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-275192087
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-111041129
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-904291739
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-992830933
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1786081543
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1610871516
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1010856434
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1199061184
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1992311794
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@2114450752
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1321200142
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1132995392
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@339744782
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-410342930
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1203593540
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1391798290
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@2109918396
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1921713646
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@1128463036
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@940258286
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-205348032
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-41197074
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1186803392
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1022652434
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-1815903044
+Message: SetStep 5
+Updated model: {Count = 0; Step = 5; TimerOn = false;}
+View, model = {Count = 0; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@-596639415
+Message: Increment
+Updated model: {Count = 5; Step = 5; TimerOn = false;}
+View, model = {Count = 5; Step = 5; TimerOn = false;}
+View result: ContentPage(...)@137586732

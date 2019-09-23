@@ -75,8 +75,3 @@ empty
         (addEdge 0 v1 v2 "edge1" g)))
 |> snd
 |> printfn "Parsed graph: %A"                
-
-let add x y = x + y
-
-empty |> addVertex "N1" |> addVertex "N2"
-

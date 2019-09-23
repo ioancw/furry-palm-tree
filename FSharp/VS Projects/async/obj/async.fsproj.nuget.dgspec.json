@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ioanwilliams/github/furry-palm-tree/FSharp/VS Projects/async/async.fsproj": {}
+  },
+  "projects": {
+    "/Users/ioanwilliams/github/furry-palm-tree/FSharp/VS Projects/async/async.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ioanwilliams/github/furry-palm-tree/FSharp/VS Projects/async/async.fsproj",
+        "projectName": "async",
+        "projectPath": "/Users/ioanwilliams/github/furry-palm-tree/FSharp/VS Projects/async/async.fsproj",
+        "packagesPath": "/Users/ioanwilliams/.nuget/packages/",
+        "outputPath": "/Users/ioanwilliams/github/furry-palm-tree/FSharp/VS Projects/async/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/ioanwilliams/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "FSharp.Core": {
+              "target": "Package",
+              "version": "[4.2.*, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
