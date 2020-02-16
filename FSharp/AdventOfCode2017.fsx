@@ -1,5 +1,4 @@
-let myAssert a b = 
-    a = b
+let myAssert a b = a = b
 
 //Utility functions
 

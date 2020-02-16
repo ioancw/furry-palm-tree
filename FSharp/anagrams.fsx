@@ -37,7 +37,8 @@ let printTopN (anagrams: Dictionary<string, ResizeArray<'T>>) n =
                     |> printfn "%s : %s" group.Key)
 
 printTopN anagramDict 10
-
+    type Input = private | CellInput
+    type Function = private | CellFunction
 let data = 
     (File.ReadAllLines fileName) 
     |> Array.groupBy sortString
@@ -48,3 +49,16 @@ let data =
                     |> Seq.map( fun s -> s.ToString())
                     |> String.concat ","
                     |> printfn "%s : %s" (fst entry))
+
+
+type Input = private | CellInput
+type Function = private | CellFunction
+
+type Cell<'a,'b> = private | Cell of int
+
+let empty = {
+    InputValues = [||]
+    FunctionInputs = [||]
+    FunctionFunctions = [||]
+    FunctionValues = [||]
+}
