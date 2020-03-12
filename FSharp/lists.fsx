@@ -16,13 +16,13 @@ let rec printList list =
         printf "%d" head
         printList tail
         
-let convertIntListToInt (list : int list ) = 
+let convertIntListToInt (list: int list ) = 
     list
     |> List.map (fun i -> i.ToString())
     |> String.concat ""
     |> int
 
-let convertIntListToInt2 (l : int list) = 
+let convertIntListToInt2 (l: int list) = 
     l
     |> List.fold (fun acc x -> acc + x.ToString()) ""
     |> int
@@ -33,7 +33,7 @@ let rec convertToString (l) =
     | [] -> ""
     | head :: tail -> head.ToString() + convertToString tail
 
-let isEmptySet (set : Set<'a>) = set.Count = 0
+let isEmptySet (set: Set<'a>) = set.Count = 0
 
 let isPermutation l1 l2 = 
     Set.difference (Set.ofList l1) (Set.ofList l2)
