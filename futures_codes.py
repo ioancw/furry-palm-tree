@@ -54,12 +54,9 @@ assert get_futures_year('H0', datetime.date(2018, 4, 28)).year == 2020
 assert get_futures_year('H8', datetime.date(2018, 2, 28)).year == 2018
 assert get_futures_year('H8', datetime.date(2018, 3, 2)).year == 2018
 assert get_futures_year('H8', datetime.date(2018, 3, 26)).year == 2018
-assert get_futures_year(
-    'H8', lastday_of_month(datetime.date(2018, 3, 2))).year == 2018
-assert get_futures_year(
-    'H28', lastday_of_month(datetime.date(2018, 3, 2))).year == 2028
+assert get_futures_year('H8', lastday_of_month(datetime.date(2018, 3, 2))).year == 2018
+assert get_futures_year('H28', lastday_of_month(datetime.date(2018, 3, 2))).year == 2028
 assert get_futures_year('H8', datetime.date(2018, 4, 1)).year == 2028
-
 assert get_two_digit_code('H8', datetime.date(2018, 3, 26), 2024) == 'H8'
 assert get_two_digit_code('H8', datetime.date(2018, 4, 26), 2024) == 'H28'
 assert get_two_digit_code('H4', datetime.date(2018, 1, 28), 2024) == 'H24'

@@ -2,7 +2,7 @@ module D1
 import Base.*
 import Base.+
 
-  type Point
+  struct Point
     x
     y
   end

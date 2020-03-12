@@ -2,22 +2,25 @@ function sort_word(str)
   return join(sort(collect(str)))
 end
 
-fname = "/Users/ReallyBigIoan/Documents/words.txt"
-# using do means the file is closed automatically
-# in the same way "with" does in python
-anagrams = Dict()
-open(fname,"r") do f
-    for line in eachline(f)
-        word = chomp(strip(line))
-        sorted_word = sort_word(word)
+function get_anagrams(file, hash_function)
+  anagrams = Dict()
+  open(file,"r") do f
+      for line in eachline(f)
+          word = chomp(strip(line))
+          hashed_key = hash_function(word)
 
-        if haskey(anagrams, sorted_word)
-          push!(anagrams[sorted_word],word)
-        else
-          anagrams[sorted_word] = [word]
-        end
-    end
+          if haskey(anagrams, hashed_key)
+            push!(anagrams[hashed_key],word)
+          else
+            anagrams[hashed_key] = [word]
+          end
+      end
+  end
+  return anagrams
 end
+
+fname = "/Users/ioanwilliams/github/furry-palm-tree/words.txt"
+anagrams = get_anagrams(fname, sort_word)
 
 sorted = []
 for v in values(anagrams)
@@ -27,6 +30,20 @@ end
 #sort by first element of tuple
 sort!(sorted, by = x -> x[1])
 
-for(a,b) in sorted
+for (a,b) in sorted
   println(a,": ",join(b,","))
 end
+
+x = 1 + 2
+
+function add(n)
+  return n + 10
+end
+
+2 |> add
+
+function mult(a, b)
+    return a + b
+end
+
+2 |> mult(10, _)
