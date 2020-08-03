@@ -24,7 +24,7 @@ I've run the simulation 1,000,000 times, and provided the average number of boxe
 open FSharp.Collections.ParallelSeq
 open System
 
-let packBoxes items volume= 
+let packBoxes volume items= 
     let mutable boxes = [||]
     items
     |> Array.sortDescending
@@ -45,11 +45,16 @@ let randomItems from upTo times =
 
 let stopWatch = System.Diagnostics.Stopwatch.StartNew()
 let vol = 1000000
-let simulation4 = PSeq.fold (fun acc _ -> (packBoxes (randomItems 1 vol 90) vol) + acc) 0 {0 .. vol}
+let packingSim = packBoxes vol
+let randomiser= randomItems 1 vol 90
+let simulation4 = PSeq.fold (fun acc _ -> (randomiser |> packingSim) + acc) 0 {0 .. vol}
+
+
+//finds average number of boxes used when 1m simulations are run
 
 stopWatch.Stop()
 
-let averageSacks = (float)simulation4  / (float)vol
+let averageSacks = (float)simulation4 / (float)vol
 printfn "Average number of sacks used %f" averageSacks
-printfn "%i" stopWatch.Elapsed.Seconds
+printfn "Number of seconds%i" stopWatch.Elapsed.Seconds
 

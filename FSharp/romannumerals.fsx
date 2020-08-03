@@ -27,6 +27,7 @@ let convertArabicToRoman arabic =
     arabicToOrdinals arabic
     |> List.map (fun (o, n) -> toRoman romanDigits2.[o] n)
     |> List.fold (+) ""
+
 //second version
 let rec mult s n =
     match n with
