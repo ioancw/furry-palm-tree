@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "uatqXNF37SaSJul6gvYI/rGv9THzxkigk9mFgiofnC2+wJp3TaxELlVp6rGAjAAjKIJMTPYlDKMUnJo7XKvI4w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ioan_\\GitHub\\furry-palm-tree\\FileSearch\\FileSearch.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ioan_\\.nuget\\packages\\fsharp.core\\4.7.1\\fsharp.core.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}
