@@ -1,4 +1,5 @@
 ﻿module query
+
 open System
 open System.IO
 open common
@@ -72,7 +73,7 @@ let searchFor queryFolder query =
 
     matchingFiles
     |> Seq.map (fun (Path path) -> path)
-    |> search id (fun (_, l) ->
+    |> search id (fun (_, l: string) ->
            queryTokens
            |> Array.exists (fun (Token t) -> l.Contains(t)))
     |> Seq.groupBy (fun r -> r.File)

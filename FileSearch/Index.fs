@@ -10,7 +10,7 @@ let getFiles fileTypeToIndex folderToIndex =
     Directory.GetFiles(folderToIndex, "*." + fileTypeToIndex, SearchOption.AllDirectories)
 
 let delimiters =
-    ".,;<>()-+!@#$%^&*?[]{};= \t\0'\"\\/".ToCharArray()
+    ".,;<>()-+!@#$%^&*?[]{}:= \t\0'\"\\/".ToCharArray()
 
 let stopWords =
     [ "namespace"; "open"; "let" ] |> List.map Token
