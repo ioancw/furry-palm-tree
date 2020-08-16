@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "FileSearch", "FileSearch.fsproj", "{FAC6AE99-2DF6-4231-B800-2A5BDEA94836}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FileSearch", "FileSearch.fsproj", "{1B1C31BC-746E-429A-891B-F36492081DAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FAC6AE99-2DF6-4231-B800-2A5BDEA94836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FAC6AE99-2DF6-4231-B800-2A5BDEA94836}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FAC6AE99-2DF6-4231-B800-2A5BDEA94836}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FAC6AE99-2DF6-4231-B800-2A5BDEA94836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B1C31BC-746E-429A-891B-F36492081DAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B1C31BC-746E-429A-891B-F36492081DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B1C31BC-746E-429A-891B-F36492081DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B1C31BC-746E-429A-891B-F36492081DAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

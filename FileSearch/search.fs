@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 ﻿module Search
 
+=======
+﻿module search
+
+open common
+>>>>>>> 02237e5325edb20892e021cf36cccd16644d719b
 open System
 open System.IO
 open System.Text.RegularExpressions
@@ -17,7 +23,7 @@ let read (file: string) =
     seq {
         use reader = new StreamReader(file)
         while not reader.EndOfStream do
-            reader.ReadLine()
+            yield reader.ReadLine()
     }
 
 let searchFile tokens parse check file =
@@ -26,9 +32,14 @@ let searchFile tokens parse check file =
     |> Seq.filter check
     |> Seq.map (fun (i, l) -> SearchResult(i, file, l, tokens))
 
+<<<<<<< HEAD
 let search tokens parse check =
     Seq.map (fun file -> searchFile tokens parse check file)
     >> Seq.concat
+=======
+let search parse check =
+    Seq.collect (fun file -> searchFile parse check file)
+>>>>>>> 02237e5325edb20892e021cf36cccd16644d719b
 
 let printLineWithHighlight line tokens =
     //In order to do a Regex.Split (and return the word you split on) you need
@@ -57,3 +68,20 @@ let printResults: seq<string * seq<SearchResult>> -> unit =
             printLineWithHighlight sr.Content sr.Tokens)
         c + size) 0
     >> printfn "%d results"
+<<<<<<< HEAD
+=======
+
+let lineSplitter (s: string) = s.Split(' ')
+let tokens = [ "on"; "thr" ]
+let words = "one two three" |> lineSplitter
+
+let result2 =
+    let colourtagged =
+        words
+        |> Array.map (fun w ->
+            if List.exists (fun (x: string) -> w.Contains(x)) tokens
+            then sprintf "Red{%s}" w
+            else w)
+
+    String.Join(" ", colourtagged)
+>>>>>>> 02237e5325edb20892e021cf36cccd16644d719b

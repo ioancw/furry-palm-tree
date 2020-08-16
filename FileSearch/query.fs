@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿module Query
+=======
+﻿module query
+>>>>>>> 02237e5325edb20892e021cf36cccd16644d719b
 
 open System
 open System.IO
@@ -76,6 +80,7 @@ let searchFor queryFolder query =
 
     matchingFiles
     |> Seq.map (fun (Path path) -> path)
+<<<<<<< HEAD
     |> search (queryTokens: Token []) id (fun (_, l) ->
            qt //TODO: need to sort this out - it should come from the tokens passed into this function
            |> Array.exists (fun (Token t) -> l.Contains(t)))
@@ -90,3 +95,10 @@ let ts, fs =
     match q |> runQuery with
     | QTokens (ql, l) -> ql, l
     | _ -> failwith "Query didn't execute correctly."
+=======
+    |> search id (fun (_, l: string) ->
+           queryTokens
+           |> Array.exists (fun (Token t) -> l.Contains(t)))
+    |> Seq.groupBy (fun r -> r.File)
+    |> printResults
+>>>>>>> 02237e5325edb20892e021cf36cccd16644d719b

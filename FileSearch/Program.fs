@@ -44,9 +44,12 @@ let main args =
     let args = parseArgs args
 
     //error handling here.
-    let folder = Seq.head args.["folder"]
-    let query = Seq. head args.["find"]
-    
+    //let folder = Seq.head args.["folder"]
+    //let query = Seq. head args.["find"]
+
+    let folder = "/Users/ioanwilliams/github/furry-palm-tree"
+    let query = "test"
+
     do searchFor folder query
 
     do apply currentColour
