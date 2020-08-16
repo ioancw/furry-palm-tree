@@ -1,9 +1,8 @@
-﻿// Learn more about F# at http://fsharp.org
-
-open System
+﻿open System
 open System.Text.RegularExpressions
-open query
-open common
+
+open Query
+open Common
 
 // parse command using regex
 // if matched, return (command name, command value) as a tuple
@@ -51,5 +50,4 @@ let main args =
     do searchFor folder query
 
     do apply currentColour
-    printfn "Hello World from F#!"
     0 // return an integer exit code

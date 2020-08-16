@@ -1,8 +1,7 @@
-﻿module common
+﻿module Common
 
 open System
 
-//Index Module
 type Token = Token of string
 
 type Path = Path of string
@@ -19,6 +18,8 @@ type Query = { QueryText: string; Index: Index }
 
 let stringParse delimiter (s: string) = s.Split([| delimiter |])
 
+let stringContact (chars: char []) = String.Concat(chars)
+
 let parseTilde = stringParse '~'
 
 let parseColon = stringParse ':'
@@ -26,6 +27,8 @@ let parseColon = stringParse ':'
 let parseComma = stringParse ','
 
 let stringJoin (delimiter: char) (items: string []) = String.Join(delimiter, items)
+
+let stringJoinS (deliminator: string) (strings: string []) = String.Join(deliminator, strings)
 
 let arrayJoinComma = stringJoin ','
 
@@ -42,7 +45,7 @@ module Colours =
 
 let apply colour = Console.ForegroundColor <- colour
 
-let printc colour text = 
+let printc colour text =
     let current = Console.ForegroundColor
     apply colour
     printf "%s" text

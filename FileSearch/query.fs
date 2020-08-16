@@ -1,9 +1,11 @@
-﻿module query
+﻿module Query
+
 open System
 open System.IO
-open common
+
+open Common
 open Index
-open search
+open Search
 
 let searchIndexForTerm index (searchTerm: string) =
     let searchNgram = searchTerm.Substring(0, 3) |> Ngram
@@ -70,10 +72,21 @@ let searchFor queryFolder query =
         | QTokens (ql, l) -> ql, l
         | _ -> failwith "Query didn't execute correctly."
 
+    let qt = queryTokens
+
     matchingFiles
     |> Seq.map (fun (Path path) -> path)
-    |> search id (fun (_, l) ->
-           queryTokens
+    |> search (queryTokens: Token []) id (fun (_, l) ->
+           qt //TODO: need to sort this out - it should come from the tokens passed into this function
            |> Array.exists (fun (Token t) -> l.Contains(t)))
     |> Seq.groupBy (fun r -> r.File)
     |> printResults
+
+let q =
+    { QueryText = "agent"
+      Index = getOrCreateIndex @"C:\Users\ioan_\GitHub" }
+
+let ts, fs =
+    match q |> runQuery with
+    | QTokens (ql, l) -> ql, l
+    | _ -> failwith "Query didn't execute correctly."

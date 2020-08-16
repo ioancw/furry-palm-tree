@@ -2,7 +2,8 @@
 
 open System
 open System.IO
-open common
+
+open Common
 
 let fileTypeToIndex = "fs"
 
@@ -10,10 +11,11 @@ let getFiles fileTypeToIndex folderToIndex =
     Directory.GetFiles(folderToIndex, "*." + fileTypeToIndex, SearchOption.AllDirectories)
 
 let delimiters =
-    ".,;<>()-+!@#$%^&*?[]{};= \t\0'\"\\/".ToCharArray()
+    ".,;<>()-+!@#$%^&*?[]{}:= \t\0'\"\\/".ToCharArray()
 
 let stopWords =
-    [ "namespace"; "open"; "let" ] |> List.map Token
+    [ "namespace"; "open"; "let"; "module" ]
+    |> List.map Token
 
 let getDocuments (fileNames: string array) =
     fileNames
@@ -48,12 +50,7 @@ let tokenToDocument (documents: Document []) =
 let ngrams n (Token t) =
     t
     |> Seq.windowed (n + 1)
-    |> Seq.map (fun chars ->
-        chars
-        |> Array.take n
-        |> Array.map string
-        |> Array.reduce (+)
-        |> Ngram)
+    |> Seq.map (fun chars -> chars |> Array.take n |> stringContact |> Ngram)
     |> Seq.toArray
 
 let ngramsToTokens (documents: Document []) =
@@ -127,14 +124,13 @@ let loadNgrams indexFolder =
         None
 
 let getOrCreateIndex indexFolder =
-    //only want to execute when I need to
-    let tokensisedDocuments = tokeniseDocuments indexFolder
+    let tokensisedDocuments () = tokeniseDocuments indexFolder
 
     let ngrams =
         match loadNgrams indexFolder with
         | Some n -> n
         | None ->
-            let ngrams = ngramsToTokens tokensisedDocuments
+            let ngrams = ngramsToTokens (tokensisedDocuments ()) //TODO, cache the first call
             saveNgrams indexFolder ngrams
             ngrams
 
@@ -142,7 +138,7 @@ let getOrCreateIndex indexFolder =
         match loadTokens indexFolder with
         | Some t -> t
         | None ->
-            let tokens = tokenToDocument tokensisedDocuments
+            let tokens = tokenToDocument (tokensisedDocuments ())
             saveTokens indexFolder tokens
             tokens
 
