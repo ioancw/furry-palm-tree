@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bd741c8-2183-4931-a528-29ae38b04ac0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Covid-19/.ipynb_checkpoints/Covid-19 Analysis-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../Covid-19/.ipynb_checkpoints/Covid-19 Analysis-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Covid-19/Covid-19 Analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../Covid-19/Covid-19 Analysis.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp.dir/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdventOfCode2017.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/AdventOfCode2017.fsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VS Projects/async/obj/Debug/netcoreapp2.2/async.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/VS Projects/async/obj/Debug/netcoreapp2.2/async.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VS Projects/async/obj/Debug/netcoreapp2.2/async.fsprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/VS Projects/async/obj/Debug/netcoreapp2.2/async.fsprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/21_card_trick.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/21_card_trick.fsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test graph.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/Test graph.fsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/anagrams.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/anagrams.fsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/async-agents.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/async-agents.fsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dagcell.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/dagcell.fsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fsharpevents.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/fsharpevents.fsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnfsharp.fs" beforeDir="false" afterPath="$PROJECT_DIR$/learnfsharp.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/romannumerals.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/romannumerals.fsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,26 +24,30 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/observer.fsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Packing.fsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ChrisSmith.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CSBiol graph.fsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/example.fsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/99 Problems in FSharp (from Ocaml).fsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/anagrams.fsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/learnfsharp.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/fsharpevents.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Packing.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/039B1760-3F7A-807E-0EEA-A652DC64C784/D/mailbox.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/matrix.fsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/testgraph.fsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CSBiol graph.fsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/dagcell.fsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/fsharp-agents.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/dagcell.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/anagrams.fsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/binPacking.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/learnfsharp.fs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tutorial.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ChrisSmith.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/mbp-wrap.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/observer.fsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/anagrams.fsx" />
         <option value="$PROJECT_DIR$/dagcell.fsx" />
+        <option value="$PROJECT_DIR$/mbp-wrap.fsx" />
       </list>
     </option>
   </component>
@@ -53,13 +63,14 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TWShift.4" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -68,19 +79,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -96,11 +95,12 @@
       <workItem from="1572988390689" duration="23000" />
       <workItem from="1573392680818" duration="1997000" />
       <workItem from="1579457937131" duration="368000" />
+      <workItem from="1589217653995" duration="7170000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
@@ -109,19 +109,33 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="341" y="137" key="SettingsEditor" timestamp="1579458140647">
-      <screen x="0" y="23" width="1680" height="951" />
+    <state x="2152" y="635" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1589218592481">
+      <screen x="0" y="0" width="3840" height="1560" />
     </state>
-    <state x="341" y="137" key="SettingsEditor/0.23.1680.951@0.23.1680.951" timestamp="1579458140647" />
+    <state x="2152" y="635" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.3840.1560@0.0.3840.1560" timestamp="1589218592481" />
+    <state x="-7" y="0" width="1294" height="1560" key="SettingsEditor" timestamp="1589276719063">
+      <screen x="0" y="0" width="3840" height="1560" />
+    </state>
+    <state x="-7" y="0" width="1294" height="1560" key="SettingsEditor/0.0.3840.1560@0.0.3840.1560" timestamp="1589276719063" />
+    <state x="2083" y="382" width="644" height="795" key="find.popup" timestamp="1589272331083">
+      <screen x="0" y="0" width="3840" height="1560" />
+    </state>
+    <state x="2083" y="382" width="644" height="795" key="find.popup/0.0.3840.1560@0.0.3840.1560" timestamp="1589272331083" />
+    <state x="2068" y="359" width="672" height="678" key="search.everywhere.popup" timestamp="1589275839929">
+      <screen x="0" y="0" width="3840" height="1560" />
+    </state>
+    <state x="2068" y="359" width="672" height="678" key="search.everywhere.popup/0.0.3840.1560@0.0.3840.1560" timestamp="1589275839929" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
