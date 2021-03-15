@@ -28,7 +28,7 @@ let tokenize source =
 
     tokenize' [] source
 
-let rec mult s (n: int): string =
+let rec mult s (n: int) : string =
     match n with
     | 0 -> ""
     | _ -> s + (mult s (n - 1))

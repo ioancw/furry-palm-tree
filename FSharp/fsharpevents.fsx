@@ -13,7 +13,9 @@ let classWithEvent = EventClass()
 
 classWithEvent.Event.Add(fun (sender, arg) -> printfn "Event1 occurred! Object data: %A" arg)
 
-let z = classWithEvent.Event |> Observable.subscribe (fun (sender, arg) -> printfn "Event occurred! Message: %A" arg)
+let z =
+    classWithEvent.Event
+    |> Observable.subscribe (fun (sender, arg) -> printfn "Event occurred! Message: %A" arg)
 
 classWithEvent.TestEvent("Hello World!")
 
@@ -28,7 +30,9 @@ type SimpleCounter() =
         count <- count + 1
         if count % 10 = 0 then evt.Trigger(count)
 
-    member x.RollOneHunderd() = [ 1 .. 100 ] |> List.iter (fun cnt -> x.Increment())
+    member x.RollOneHunderd() =
+        [ 1 .. 100 ]
+        |> List.iter (fun cnt -> x.Increment())
 
     /// Event triggered after every 10 increments
     /// The value carried by the event is 'int'
@@ -36,13 +40,17 @@ type SimpleCounter() =
 
 let simpleCounter = SimpleCounter()
 
-let cntr = simpleCounter.IncrementedTenTimes |> Observable.subscribe (fun count -> printfn "Count is: %A" count)
+let cntr =
+    simpleCounter.IncrementedTenTimes
+    |> Observable.subscribe (fun count -> printfn "Count is: %A" count)
 
 simpleCounter.RollOneHunderd()
 
 let createTimerAndObservable timerInterval =
     // setup a timer
-    let timer = new System.Timers.Timer(float timerInterval)
+    let timer =
+        new System.Timers.Timer(float timerInterval)
+
     timer.AutoReset <- true
 
     // events are automatically IObservable
