@@ -1,6 +1,0 @@
-/Users/ioanwilliams/github/furry-palm-tree/FSharp/FabulousTest/SqueakyApp/SqueakyApp/bin/Debug/netstandard2.0/SqueakyApp.deps.json
-/Users/ioanwilliams/github/furry-palm-tree/FSharp/FabulousTest/SqueakyApp/SqueakyApp/bin/Debug/netstandard2.0/SqueakyApp.dll
-/Users/ioanwilliams/github/furry-palm-tree/FSharp/FabulousTest/SqueakyApp/SqueakyApp/bin/Debug/netstandard2.0/SqueakyApp.pdb
-/Users/ioanwilliams/github/furry-palm-tree/FSharp/FabulousTest/SqueakyApp/SqueakyApp/obj/Debug/netstandard2.0/XamlC.stamp
-/Users/ioanwilliams/github/furry-palm-tree/FSharp/FabulousTest/SqueakyApp/SqueakyApp/obj/Debug/netstandard2.0/SqueakyApp.dll
-/Users/ioanwilliams/github/furry-palm-tree/FSharp/FabulousTest/SqueakyApp/SqueakyApp/obj/Debug/netstandard2.0/SqueakyApp.pdb
