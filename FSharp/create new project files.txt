@@ -1,0 +1,19 @@
+# how to create a new solution with a project and a test project and update dependencies
+
+mkdir Math
+cd Math 
+dotnet new classlib -lang "F#"
+cd ..
+mkdir Math.Test
+cd Math.Test 
+dotnet new xunit -land "F#" 
+dotnet add package FSUnit.xUnit 
+dotnew add reference ../Math/Math.fsproj
+cd ..
+dotnet new sln
+dotnet sln add .\Math\Math.fsproj
+dotnet sln add .\Math.Test\Math.Test.fsproj
+
+
+
+
