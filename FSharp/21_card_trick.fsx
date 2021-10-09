@@ -1,4 +1,3 @@
-open System.Windows.Forms
 ////////////////////21 card trick
 
 //get 21 cards from deck
@@ -119,13 +118,13 @@ let runGame =
     let deck =
         [ for card in ranks do
               for suit in suits do
-                  yield (card, suit) ]
+                  (card, suit) ]
 
     let choiceDeck = cards21 deck
     let space = Console.ReadLine()
 
     for card in choiceDeck do
-        printfn "%s of %s" (fst card) (snd card)
+        printfn $"%s{fst card} of %s{snd card}"
 
     printfn "Now choose a card.  I will guess it. Hit any key to continue."
     let space = Console.ReadLine()
@@ -152,8 +151,7 @@ type Rank =
 
     static member GetAllRanks() =
         [ yield Ace
-          for i in 2 .. 10 do
-              yield Value i
+          for i in 2 .. 10 -> Value i
           yield Jack
           yield Queen
           yield King ]
@@ -165,7 +163,7 @@ type Card = { Suit: Suit; Rank: Rank }
 let fullDeck =
     [ for suit in Suit.GetSuits() do
           for rank in Rank.GetAllRanks() do
-              yield { Suit = suit; Rank = rank } ]
+              { Suit = suit; Rank = rank } ]
 
 //prints out a card
 let printCard (c: Card) =
@@ -188,7 +186,7 @@ let printCard (c: Card) =
 
 let printCards () =
     for card in fullDeck do
-        printfn "%s" (printCard card)
+        printfn $"%s{printCard card}"
 
 let shuffleFunc (r: Random) xs = xs |> Seq.sortBy (fun _ -> r.Next())
 
@@ -200,7 +198,7 @@ let getnRandomCards n deck =
 
 let deal21cards = getnRandomCards 21 fullDeck
 
-let printer = (printCard >> printfn "%s")
+let printer = printCard >> printfn "%s"
 
 deal21cards |> Seq.iter printer
 
@@ -226,7 +224,7 @@ let p1C, p2C, p3C = getPilesC deal21cards
 
 let printPilesC (p1: Card list) (p2: Card list) (p3: Card list) =
     for i in [ 0 .. 6 ] do
-        printfn "%s : %s : %s" (printCard p1.[i]) (printCard p2.[i]) (printCard p3.[i])
+        printfn $"%s{printCard p1.[i]} : %s{printCard p2.[i]} : %s{printCard p3.[i]}"
     |> ignore
 
 printPilesC p1C p2C p3C
