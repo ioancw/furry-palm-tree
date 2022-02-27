@@ -49,3 +49,30 @@ if r.ExitCode = 0 then
 else 
     eprintfn "%s" r.StandardError
     Environment.Exit(r.ExitCode)
+
+type StaleType = 
+    | Reason1 of string 
+    | Reason2 of string
+
+type MyDU = 
+    | Fresh 
+    | Stale of StaleType 
+    | Other 
+
+let processMyDu (mydu: MyDU) = 
+    match mydu with 
+    | Fresh | Stale _ -> "fresh or stale" 
+    | Other -> "other"
+
+let mydu = MyDU.Fresh
+let mydu' = MyDU.Other 
+let mydu'' = MyDU.Stale(StaleType.Reason1("Reason1"))
+let mydu''' = MyDU.Stale(StaleType.Reason2("Reason2"))
+
+processMyDu mydu
+processMyDu mydu'
+processMyDu mydu''
+processMyDu mydu'''
+
+
+
