@@ -264,6 +264,10 @@ def find_matching_words(wordList, freqScore, guess, mask):
     return [w[1] for w in word_freqs]
 
 
+def find_matching_words2(wordList, mask_function, guess, mask):
+    return [x for x in wordList if mask_function(x, guess) == mask]
+
+
 round1 = find_matching_words(words, freq_score, "arose", [1, 0, 0, 1, 0])
 round1_0 = find_matching_words0(words, freq_score, "arose", [1, 0, 0, 1, 0])
 round2 = find_matching_words(round1, freq_score, "unlit", [0, 1, 0, 0, 1])
@@ -277,6 +281,7 @@ round4 = find_matching_words(
 round5 = find_matching_words(
     words, freq_score, ["arose", "ratio", "carol", "manor", "vapor"],
     [[1, 1, 1, 0, 0], [1, 2, 0, 0, 1], [0, 2, 1, 2, 0], [0, 2, 0, 2, 2], [1, 2, 0, 2, 2]])
+
 
 def get_answer_mask(actual, guess):
     not_matched = Counter(a for a, g in zip(actual, guess) if a != g)
@@ -306,6 +311,9 @@ tw = "cigar"
 after1 = find_matching_words(words, freq_score, "arose", get_answer_mask(tw, "arose"))
 after2 = find_matching_words(after1, freq_score, "unlit", get_answer_mask(tw, "unlit"))
 after3 = find_matching_words(after2, freq_score, "caddy", get_answer_mask(tw, "caddy"))
+
+after1_2 = find_matching_words2(words, get_answer_mask, "arose", get_answer_mask(tw, "arose"))
+
 
 # play wordle
 # strategy is to loop the rounds

@@ -93,30 +93,28 @@ class Solver:
 
         return [w[1] for w in word_freqs]
 
-    def run_simulation(self, target_words, sims, guess_function, seed_words=[]):
+    def run_simulation(self, target_words, sims, guess_function, seed_words=[], verbose=True):
         for sim in range(sims):
             game_results = {}
+            N = 6
             for target_word in target_words:
                 print("Target: " + target_word)
                 words_for_round = self.words.copy()
-                for game_round in range(6):
-                    guess = guess_function(words_for_round)
-
-                    # find seed word, which are favourite start words that you can use.
-                    seed = seed_words[game_round]
-                    if seed is not None:
-                        guess = seed
+                for game_round in range(1, N + 1):
+                    seed = seed_words[game_round - 1]
+                    guess = seed or guess_function(words_for_round)
+                    # remove the word being used as the guess, as it could be chosen again.
                     if guess in words_for_round:
                         words_for_round.remove(guess)
-                    print(str(game_round + 1) + ": " + guess)
+                    if verbose:
+                        print(str(game_round) + ": " + guess)
 
                     if guess == target_word:
-                        print("Game Won on round " + str(game_round + 1))
-                        game_results[target_words.index(target_word)] = (game_round + 1, target_word)
+                        print("Game Won on round " + str(game_round))
+                        game_results[target_words.index(target_word)] = (game_round, target_word)
                         break
 
-                    words_for_round = self.find_matching_words(words_for_round, guess,
-                                                               self.get_answer_mask(target_word, guess))
+                    words_for_round = self.find_matching_words(words_for_round, guess, self.get_answer_mask(target_word, guess))
                 else:
                     game_results[target_words.index(target_word)] = ("X", target_word)
                     print("Game not won")
@@ -150,3 +148,10 @@ wordle_solver.print_game_simulations()
 wordle_solver2 = Solver(r"C:\Users\ioan_\GitHub\furry-palm-tree\Python\wordle_words.txt")
 wordle_solver2.run_simulation(wordle_solver2.words.copy(), 10, wordle_solver2.get_most_frequent_word, seed_words=["arose", "unlit", None, None, None, None])
 wordle_solver2.print_game_simulations()
+
+wordle_solver.words
+wordle_solver.find_matching_words(wordle_solver.words, "modal", [0, 2, 2, 2, 0])
+wordle_solver.find_matching_words(wordle_solver.words, "goaty", [0, 2, 1, 1, 2])
+
+r1 = wordle_solver.find_matching_words(wordle_solver.words, "arose", [1, 0, 1, 0, 0])
+r2 = wordle_solver.find_matching_words(r1, "unlit", [0, 0, 0, 0, 1])
