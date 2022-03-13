@@ -1,4 +1,19 @@
+(*** raw ***)
+---
+layout: post
+title:  "Event Post"
+description: "Subcribe to messages posted to a mailbox."
+date:   2021-11-28 06:07:00 +0100
+categories: 
+tags: F# FSharp Literate Formatting
+---
 
+(**
+My Blog
+-------
+I use github's Jekyll as a 'blog engine'.  This means I can write posts in markdown 
+and commit to the repository at which point the blog engine renders in nice html.
+*)
 open System
 
 type ISubscription = 
@@ -38,4 +53,4 @@ open System
 let input = 1.5
 let inputS = input.ToString()
         
-let parsed = inputS |> Double.TryParse        
+let parsed = inputS |> Double.TryParse
