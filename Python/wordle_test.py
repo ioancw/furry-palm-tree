@@ -1,5 +1,8 @@
-# two words and compare them.
+# %% imports
 from collections import Counter
+from functools import reduce
+
+# %% get the data
 
 # load the words - this is the official mystery word list
 words = []
@@ -8,6 +11,7 @@ for line in open(r"C:\Users\ioan_\GitHub\furry-palm-tree\Python\wordle_words.txt
     words.append(word)
 
 # for now use another source of words, but we need to filter for 5 chars.
+words = []
 for line in open(r"C:\Users\ioan_\GitHub\furry-palm-tree\words.txt"):
     word = line.strip().lower()
     if len(word) == 5:
@@ -28,21 +32,19 @@ for (l, c) in freqs.items():
     histogram.append((c, l))
 histogram.sort(reverse=True)
 
+# %% get frequency scores
+
 # use a counter example
 # https://realpython.com/python-counter/
 letter_counter = Counter()
 for word in words:
     letter_counter.update(word)
 
-# go through all words and now find out the frequency score for each.
-
-# are there any letters not present in any of the words.
 letter_set = set()
 for word in words:
     letters = list(word)
     for letter in letters:
         letter_set.add(letter)
-# all letters are present.
 
 freq_score = {}
 for word in words:
@@ -51,6 +53,8 @@ for word in words:
     for letter in letters:
         freq += freqs[letter]
     freq_score[word] = freq
+
+# %% further analysis on the distribution of letters
 
 word_scores = []
 for (w, c) in freq_score.items():
@@ -146,10 +150,9 @@ for word in words:
     vowelCountInWords.append(vowelCount)
 vowelCountCounter = Counter(vowelCountInWords)
 
-# simulating the game
+# %% finding letters in words
 
-from functools import reduce
-
+# not using reduce
 for word in words:
     letters = list(word)
     matchedLetters = []
@@ -160,6 +163,7 @@ for word in words:
         print(word)
 
 
+# using reduce
 def findWordsContainingLetter(wordList, letterList):
     matched = []
     for word in wordList:
@@ -168,10 +172,12 @@ def findWordsContainingLetter(wordList, letterList):
             matched.append(word)
     return matched
 
+
 findWordsContainingLetter(words, list("auio"))
 findWordsContainingLetter(words, list("au"))
 
 
+# find words matching a pattern, not using reduce
 def findWordsMatchingPattern(wordList, pattern):
     matched = []
     for word in words:
@@ -189,18 +195,14 @@ def findWordsMatchingPattern(wordList, pattern):
     return matched
 
 
+# find words matching a patter, but using reduce
 def findWordsMatchingPattern2(wordList, pattern):
     """
     Finds words that match a pattern, e.g ARO__ or AR_SE
     """
     def compareLetter(state, comparison):
         check, actual = comparison
-        match = False
-        if check == "_":
-            match = True
-        else:
-            match = check == actual
-        return state and match
+        return state and True if check == "_" else check == actual
 
     matched = []
     for word in wordList:
@@ -212,16 +214,16 @@ def findWordsMatchingPattern2(wordList, pattern):
     return matched
 
 
-
-findWordsMatchingPattern2(words, "___ee")
-findWordsMatchingPattern(words, "___ee")
+findWordsMatchingPattern2(words, "___er")
+findWordsMatchingPattern(words, "___ar")
 findWordsMatchingPattern(words, "___th")
 findWordsMatchingPattern(words, "___in")
-findWordsMatchingPattern(words, "__ain")
+findWordsMatchingPattern(words, "a___r")
 findWordsMatchingPattern(words, "__a_n")
 
-# filter words based on feedback.
-# simulation code
+# %% Find matching words based on the guess and guess mask
+
+
 def find_matching_words(wordList, freqScore, guess, mask):
     grey = []
     yellow = []
@@ -234,8 +236,7 @@ def find_matching_words(wordList, freqScore, guess, mask):
     # and the final O is grey, but we don't want to filter on this final O as it's also yellow.
     for word in wordList:
         zeros = filter(lambda code: code[0] == 0 and (guess_counter[code[1]] == 1), zip(mask, guess))
-        keep_word = reduce(lambda s, mask: s and mask[1] not in list(word), zeros, True)
-        if keep_word:
+        if reduce(lambda s, mask: s and mask[1] not in list(word), zeros, True):
             grey.append(word)
 
     # find ones that match yellow mask
@@ -247,9 +248,8 @@ def find_matching_words(wordList, freqScore, guess, mask):
 
     # find ones that match exactly, i.e. green
     for word in yellow:
-        letters = list(word)
         twos = filter(lambda code: code[1][0] == 2, enumerate(zip(mask, guess)))
-        found = reduce(lambda s, mask: s and mask[1][1] == letters[mask[0]], twos, True)
+        found = reduce(lambda s, mask: s and mask[1][1] == word[mask[0]], twos, True)
         if found:
             green.append(word)
 
@@ -263,32 +263,43 @@ def find_matching_words(wordList, freqScore, guess, mask):
 
     return [w[1] for w in word_freqs]
 
+# This doesn't work very well as it misses some words
+def find_matching_words2(wordList, mask_function, guess, guess_mask):
+    target_words = []
+    for w in wordList:
+        mask = mask_function(w, guess)
+        new_mask = []
+        for m in mask:
+            if m == 2:
+                m = 1
+            new_mask.append(m)
+        if new_mask == guess_mask:
+            target_words.append(w)
+    return target_words
 
-def find_matching_words2(wordList, mask_function, guess, mask):
-    return [x for x in wordList if mask_function(x, guess) == mask]
 
+small = ['cigar', 'arose', 'graph', 'ralph', 'rifts', 'arise', 'their', 'about', 'racer', 'pacer', 'radar', 'augur', 'altar']
+guess = "arose"
+guess = "lunar"
+target = "cigar"
+answer_mask = get_answer_mask(target, guess)
+small_targets_1 = after1 = find_matching_words(words, freq_score, guess, answer_mask)
+small_targets_2 = find_matching_words2(words, get_answer_mask, guess, answer_mask)
+
+small_targets_1 = find_matching_words(small, freq_score, guess, answer_mask)
+small_targets_2 = find_matching_words3(small, get_answer_mask, guess, answer_mask)
 
 round1 = find_matching_words(words, freq_score, "arose", [1, 0, 0, 1, 0])
 round1_0 = find_matching_words0(words, freq_score, "arose", [1, 0, 0, 1, 0])
 round2 = find_matching_words(round1, freq_score, "unlit", [0, 1, 0, 0, 1])
 
-round1 = find_matching_words(words, freq_score, ["arose"], [[1, 1, 1, 0, 0]])
-round2 = find_matching_words(words, freq_score, ["arose", "ratio"], [[1, 1, 1, 0, 0], [1, 2, 0, 0, 1]])
-round3 = find_matching_words(words, freq_score, ["arose", "ratio", "carol"], [[1, 1, 1, 0, 0], [1, 2, 0, 0, 1], [0, 2, 1, 2, 0]])
-round4 = find_matching_words(
-    words, freq_score, ["arose", "ratio", "carol", "manor"],
-    [[1, 1, 1, 0, 0], [1, 2, 0, 0, 1], [0, 2, 1, 2, 0], [0, 2, 0, 2, 2]])
-round5 = find_matching_words(
-    words, freq_score, ["arose", "ratio", "carol", "manor", "vapor"],
-    [[1, 1, 1, 0, 0], [1, 2, 0, 0, 1], [0, 2, 1, 2, 0], [0, 2, 0, 2, 2], [1, 2, 0, 2, 2]])
 
-
-def get_answer_mask(actual, guess):
+def get_answer_mask(actual, guess, compare_mode=False):
     not_matched = Counter(a for a, g in zip(actual, guess) if a != g)
     mask = []
     for a, g in zip(actual, guess):
         if a == g:
-            mask.append(2)
+            mask.append(1) if compare_mode else mask.append(2)
         elif g in actual and not_matched[g] > 0:
             mask.append(1)
             not_matched[g] -= 1
@@ -308,9 +319,9 @@ get_answer_mask("mourn", "quote")
 get_answer_mask("mourn", "duomo")
 
 tw = "cigar"
-after1 = find_matching_words(words, freq_score, "arose", get_answer_mask(tw, "arose"))
-after2 = find_matching_words(after1, freq_score, "unlit", get_answer_mask(tw, "unlit"))
-after3 = find_matching_words(after2, freq_score, "caddy", get_answer_mask(tw, "caddy"))
+after1 = find_matching_words(words, freq_score, "arose", [0,1,0,0,1])
+after2 = find_matching_words(after1, freq_score, "unlit", [0,0,0,0,0])
+after3 = find_matching_words(after2, freq_score, "cheer", [0,0,1,2,2])
 
 after1_2 = find_matching_words2(words, get_answer_mask, "arose", get_answer_mask(tw, "arose"))
 
