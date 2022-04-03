@@ -1,4 +1,5 @@
 # %% imports
+import random
 from collections import Counter
 from functools import reduce
 
@@ -224,6 +225,20 @@ findWordsMatchingPattern(words, "__a_n")
 # %% Find matching words based on the guess and guess mask
 
 
+def get_answer_mask(actual, guess, compare_mode=False):
+    not_matched = Counter(a for a, g in zip(actual, guess) if a != g)
+    mask = []
+    for a, g in zip(actual, guess):
+        if a == g:
+            mask.append(1) if compare_mode else mask.append(2)
+        elif g in actual and not_matched[g] > 0:
+            mask.append(1)
+            not_matched[g] -= 1
+        else:
+            mask.append(0)
+    return mask
+
+
 def find_matching_words(wordList, freqScore, guess, mask):
     grey = []
     yellow = []
@@ -263,6 +278,7 @@ def find_matching_words(wordList, freqScore, guess, mask):
 
     return [w[1] for w in word_freqs]
 
+
 # This doesn't work very well as it misses some words
 def find_matching_words2(wordList, mask_function, guess, guess_mask):
     target_words = []
@@ -277,6 +293,7 @@ def find_matching_words2(wordList, mask_function, guess, guess_mask):
             target_words.append(w)
     return target_words
 
+# %% testing the find matching words function
 
 small = ['cigar', 'arose', 'graph', 'ralph', 'rifts', 'arise', 'their', 'about', 'racer', 'pacer', 'radar', 'augur', 'altar']
 guess = "arose"
@@ -292,21 +309,6 @@ small_targets_2 = find_matching_words3(small, get_answer_mask, guess, answer_mas
 round1 = find_matching_words(words, freq_score, "arose", [1, 0, 0, 1, 0])
 round1_0 = find_matching_words0(words, freq_score, "arose", [1, 0, 0, 1, 0])
 round2 = find_matching_words(round1, freq_score, "unlit", [0, 1, 0, 0, 1])
-
-
-def get_answer_mask(actual, guess, compare_mode=False):
-    not_matched = Counter(a for a, g in zip(actual, guess) if a != g)
-    mask = []
-    for a, g in zip(actual, guess):
-        if a == g:
-            mask.append(1) if compare_mode else mask.append(2)
-        elif g in actual and not_matched[g] > 0:
-            mask.append(1)
-            not_matched[g] -= 1
-        else:
-            mask.append(0)
-    return mask
-
 
 get_answer_mask("favor", "arose")
 get_answer_mask("favor", "ratio")#  [1, 2, 0, 0, 1]
@@ -325,186 +327,6 @@ after3 = find_matching_words(after2, freq_score, "cheer", [0,0,1,2,2])
 
 after1_2 = find_matching_words2(words, get_answer_mask, "arose", get_answer_mask(tw, "arose"))
 
-
-# play wordle
-# strategy is to loop the rounds
-# can start off with a random starter word or provide a prepopulated list of words to try
-# e.g. arose and unlit.
-
-import random
-
-
-class Solver:
-    def __init__(self, words_file_path):
-        self.words = []
-        self.simulation_results = []
-        for line in open(words_file_path):
-            word = line.strip().lower()
-            self.words.append(word)
-        random.shuffle(self.words)
-
-    def get_answer_mask(self, actual, guess):
-        not_matched = Counter(a for a, g in zip(actual, guess) if a != g)
-        mask = []
-        for a, g in zip(actual, guess):
-            if a == g:
-                mask.append(2)
-            elif g in actual and not_matched[g] > 0:
-                mask.append(1)
-                not_matched[g] -= 1
-            else:
-                mask.append(0)
-        return mask
-
-    def find_matching_words(self, word_list, freqScore, guess, mask):
-        grey = []
-        yellow = []
-        green = []
-        guess_counter = Counter(guess)
-
-        # remove grey words
-        # careful not to remove words containing letters that match grey mask and another colour.
-        # e.g. if actual is MOURN and guess is DUOMO, the mask would be [0,1,1,1,0]
-        # and the final O is grey, but we don't want to filter on this final O as it's also yellow.
-        for word in word_list:
-            zeros = filter(lambda code: code[0] == 0 and (guess_counter[code[1]] == 1), zip(mask, guess))
-            keep_word = reduce(lambda s, mask: s and mask[1] not in list(word), zeros, True)
-            if keep_word:
-                grey.append(word)
-
-        # find ones that match yellow mask
-        for word in grey:
-            ones = filter(lambda code: code[0] == 1, zip(mask, guess))
-            found = reduce(lambda s, mask: s and mask[1] in list(word), ones, True)
-            if found:
-                yellow.append(word)
-
-        # find ones that match exactly, i.e. green
-        for word in yellow:
-            letters = list(word)
-            twos = filter(lambda code: code[1][0] == 2, enumerate(zip(mask, guess)))
-            found = reduce(lambda s, mask: s and mask[1][1] == letters[mask[0]], twos, True)
-            if found:
-                green.append(word)
-
-        final = green
-
-        word_freqs = []
-        for word in final:
-            score = freqScore[word]
-            word_freqs.append((score, word))
-        word_freqs = sorted(word_freqs, reverse=True)
-
-        return [w[1] for w in word_freqs]
-
-    def run_simulation(self, target_words, sims, seed_words=[]):
-        for sim in range(sims):
-            game_results = {}
-            for target_word in target_words:
-                print("Target: " + target_word)
-                words_for_round = self.words.copy()
-                for game_round in range(6):
-                    guess = random.choice(words_for_round)
-
-                    # find seed word, which are favourite start words that you can use.
-                    seed = seed_words[game_round]
-                    if seed is not None:
-                        guess = seed
-                    if guess in words_for_round:
-                        words_for_round.remove(guess)
-                    print(str(game_round + 1) + ": " + guess)
-
-                    if guess == target_word:
-                        print("Game Won on round " + str(game_round + 1))
-                        game_results[target_words.index(target_word)] = (game_round + 1, target_word)
-                        break
-
-                    words_for_round = find_matching_words(words_for_round, freq_score, guess,
-                                                          get_answer_mask(target_word, guess))
-                else:
-                    game_results[target_words.index(target_word)] = ("X", target_word)
-                    print("Game not won")
-            self.simulation_results.append(game_results)
-        return self.simulation_results
-
-    def print_game_results(self, game_results):
-        games_played = len(game_results)
-        scores = []
-        games_won = []
-        for g, r in game_results.items():
-            if r[0] != "X":
-                games_won.append(r)
-                scores.append(r[0])
-        average = sum(scores) / len(games_won)
-        games_lost = games_played - len(games_won)
-        won_percentage = (len(games_won) / games_played) * 100
-        print("Played " + str(games_played) + ": Won " + str(len(games_won)) + ": Lost " + str(
-            games_lost) + ": Average round " + str(average))
-
-    def print_game_simulations(self):
-        for sim in self.simulation_results:
-            print_game_results(sim)
-
-wordle_solver = Solver(r"C:\Users\ioan_\GitHub\furry-palm-tree\Python\wordle_words.txt")
-len(wordle_solver.words.copy())
-wordle_solver.run_simulation(wordle_solver.words.copy(), 1, seed_words=["arose", "unlit", None, None, None, None])
-wordle_solver.print_game_results(wordle_solver.simulation_results[0])
-
-def run_simulation(words, target_words, sims, seed_words=[]):
-    sim_results = []
-    for sim in range(sims):
-        game_results = {}
-        for target_word in target_words:
-            print("Target: " + target_word)
-            words_for_round = words.copy()
-            for game_round in range(6):
-                guess = random.choice(words_for_round)
-
-                # find seed word, which are favourite start words that you can use.
-                seed = seed_words[game_round]
-                if seed is not None:
-                    guess = seed
-                if guess in words_for_round:
-                    words_for_round.remove(guess)
-                print(str(game_round + 1) + ": " + guess)
-
-                if guess == target_word:
-                    print("Game Won on round " + str(game_round + 1))
-                    game_results[target_words.index(target_word)] = (game_round + 1, target_word)
-                    break
-
-                words_for_round = find_matching_words(words_for_round, freq_score, guess, get_answer_mask(target_word, guess))
-            else:
-                game_results[target_words.index(target_word)] = ("X", target_word)
-                print("Game not won")
-        sim_results.append(game_results)
-    return sim_results
-
-seed_words = ["arose", "unlit", None, None, None, None]
-sims = run_simulation(words.copy(), words.copy(), 10, ["arose", "unlit", None, None, None, None])
-sims2 = run_simulation(words.copy(), words.copy(), 10, ["cones", "trial", None, None, None, None])
-sims_no_seed = run_simulation(words.copy(), 10, [None, None, None, None, None, None])
-
-
-def print_game_results(game_results):
-    games_played = len(game_results)
-    scores = []
-    games_won = []
-    for g, r in game_results.items():
-        if r[0] != "X":
-            games_won.append(r)
-            scores.append(r[0])
-    average = sum(scores) / len(games_won)
-    games_lost = games_played - len(games_won)
-    won_percentage = (len(games_won) / games_played) * 100
-    print("Played " + str(games_played) + ": Won " + str(len(games_won)) + ": Lost " + str(games_lost) + ": Average round " + str(average))
-
-print("results from using AROSE then UNLIT and first, second words.")
-for sim in sims:
-    print_game_results(sim)
-print("results from using random starter words")
-for sim in sims2:
-    print_game_results(sim)
 
 
 
