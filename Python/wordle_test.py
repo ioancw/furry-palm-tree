@@ -230,7 +230,7 @@ def get_answer_mask(actual, guess, compare_mode=False):
     mask = []
     for a, g in zip(actual, guess):
         if a == g:
-            mask.append(1) if compare_mode else mask.append(2)
+            mask.append(2)
         elif g in actual and not_matched[g] > 0:
             mask.append(1)
             not_matched[g] -= 1

@@ -1,0 +1,196 @@
+﻿open System.IO
+
+let rec listToString l =
+    match l with
+    | [] -> ""
+    | head :: tail -> head.ToString() + listToString tail
+
+let sortString s =
+    s |> Seq.sort |> Seq.toList |> listToString
+
+let fileName = @"C:\Users\ioan_\GitHub\furry-palm-tree\words.txt"
+
+// load given word list and ensure 5 letter words selected
+let fiveLetterWords = 
+    fileName 
+    |> File.ReadAllLines 
+    |> Seq.filter (fun w -> w.Length = 5)
+
+// analysis
+let findMatchingFiveLetterWords word = 
+    let fivemap = 
+        fiveLetterWords
+        |> Seq.groupBy sortString
+        |> Seq.sortByDescending (snd >> Seq.length)
+        |> Map.ofSeq
+    match Map.tryFind word fivemap with 
+    | Some ws -> ws |> Seq.toArray
+    | None -> Array.empty
+
+let words = 
+    fiveLetterWords
+    |> Seq.collect string
+    |> Seq.groupBy id
+    |> Seq.map (fun (k, vs) -> string k, vs |> Seq.length)
+    |> Seq.sortByDescending snd
+    |> Seq.take 10
+    |> Seq.map fst
+    |> Seq.sort
+    |> Seq.fold (+) ""
+    |> findMatchingFiveLetterWords
+    
+Array.splitAt 5 words
+
+findMatchingFiveLetterWords ([|"i"; "l"; "t"; "n"; "d"|] |> Seq.sort |> Seq.fold (+) "")
+
+// use this to determine words scores
+let frequencies = 
+    fiveLetterWords
+    |> Seq.collect id
+    |> Seq.groupBy id
+    |> Seq.map (fun (k, vs) -> k, vs |> Seq.length)
+    |> Map.ofSeq
+    
+// work out word scores 
+let letterScores =
+    fiveLetterWords
+    |> Seq.map (fun word ->
+        // this filters out words with multiple letter
+        let multiplier = word |> Seq.groupBy id |> Seq.fold (fun state (f, s) ->  state * Seq.length s) 1
+        let freq = word |> Seq.fold (fun state letter -> state + Map.find letter frequencies) 0
+        word, freq / multiplier)
+    |> Seq.sortByDescending snd
+        
+// use the following to find out the next most frequent word that doesn't contain
+// the letters from arose.        
+let aroseSet = "arose" |> Set.ofSeq
+letterScores
+|> Seq.find (fun (word, _) ->
+    let wSet = word |> Set.ofSeq
+    aroseSet |> Seq.fold (fun state l -> state || Set.contains l wSet) false |> not)
+   
+// print letter scores        
+letterScores
+|> Seq.groupBy snd
+|> Seq.map (fun (k, vs) -> k, vs |> Seq.map fst)
+        
+let grp = letterScores |> Seq.iter (fun (w, f) -> printfn "%s:%A" w f)
+
+// simulation functions
+
+// answer mask
+type answerMask = Green | Yellow | Grey
+
+// takes an actual word and a guess and returns an answer mask
+// i.e. actual is 'prose' guess is 'arose' mask is [0,2,2,2,2]
+// this is a litte tricky to get right as you don't want to double count
+//let getAnswerMask actual guess = 
+
+let actual = "prose"
+let guess = "arose"
+open System.Collections.Generic
+let zipped =
+    Seq.zip actual guess
+    |> Seq.filter (fun (a, g) -> a <> g)
+    |> Seq.groupBy id
+    |> Seq.map (fun (k, vs) -> snd k, vs |> Seq.length)
+    //|> Map.ofSeq
+    
+let myDict = new Dictionary<string, int>()
+
+let commonCount =
+    Seq.zip actual guess
+    |> Seq.filter (fun (a, g) -> a <> g)
+    |> Seq.map fst
+    |> Seq.countBy id
+
+Seq.zip actual guess
+|> Seq.map (fun (a, g) ->
+    if a = g then Green
+    elif actual.Contains(g) then Yellow
+    else Grey)
+
+// just have a recursive function that takes care of the common letter (and counts them)
+Seq.zip "treat" "speed"
+|> Seq.filter (fun (a, g) -> a <> g)
+|> Seq.map fst
+|> Seq.filter (fun i -> i = 't')
+|> Seq.length
+
+let actual = "treat"
+let guess = "speed"
+let letters = Seq.zip actual guess |> Seq.toList
+let rec masker ls mask =
+    match ls with
+    | [] -> mask
+    | (a, g) :: t when a = g -> masker t (mask @ [Green])
+    | (a, g) :: t when actual.Contains(g |> string) -> masker t (Yellow :: mask)
+    | h :: t -> masker t (Grey :: mask)
+
+masker letters []
+
+let collect x =
+    function
+    | (y :: xs) :: xss when x = y -> (x :: y :: xs) :: xss //add to start of existing list.
+    | xss -> [ x ] :: xss //create a new list
+
+List.foldBack collect ("aaaabbbcca" |> List.ofSeq) []
+|> List.map (List.countBy id)
+
+let getMask actual guess =
+    let removeFirstInstance remove fromList =
+        let rec removeFirst predicate = function
+            | [] -> []
+            | h :: t when predicate h -> t //terminates
+            | h :: t -> h :: removeFirst predicate t
+        removeFirst (fun i -> i = remove) fromList
+    
+    let rec masker2 (ls, count) mask =
+        match (ls, count) with
+        | [], _ -> mask
+        | (a, g) :: t, cs when a = g ->
+            masker2 (t, cs) (Green :: mask)
+        | (a, g) :: t, cs ->
+            let counts = cs |> List.filter (fun i -> i = g) |> List.length
+            if Seq.contains g actual && counts > 0 then
+                let newCounts = removeFirstInstance g cs
+                masker2 (t, newCounts) (Yellow :: mask)
+            else 
+                masker2 (t, cs) (Grey :: mask)
+    
+    let notMatched =
+        Seq.zip actual guess
+        |> Seq.filter (fun (a, g) -> a <> g)
+        |> Seq.toList
+        |> List.map fst
+
+    let letters = Seq.zip actual guess |> Seq.toList     
+    masker2 (letters, notMatched) [] |> List.rev 
+        //actual //guess
+getMask "favor" "arose"
+getMask "favor" "ratio"
+getMask "favor" "carol"
+getMask "favor" "vapor"
+getMask "arose" "speed"
+getMask "treat" "speed"
+
+let rec removeFirst predicate = function
+    | [] -> []
+    | h :: t when predicate h -> t //terminates
+    | h :: t -> h :: removeFirst predicate t
+    
+let removeFirst2 predicate list =
+    let rec loop acc = function
+        | [] -> acc
+        | h :: t when predicate h ->
+            printfn "%A" acc
+            (List.rev acc) @ t //terminates
+        | h :: t ->
+            printfn "%A~%A#%A" h t acc
+            loop (h :: acc) t
+    loop [] list
+    
+removeFirst (fun i -> i = 'b') ['a';'a';'b';'b';'b';'c']
+removeFirst2 (fun i -> i = 'b') ['a';'a';'b';'b';'b';'c']
+
+
