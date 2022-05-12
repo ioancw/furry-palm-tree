@@ -96,29 +96,6 @@ let zipped =
     |> Seq.map (fun (k, vs) -> snd k, vs |> Seq.length)
     //|> Map.ofSeq
     
-let myDict = new Dictionary<string, int>()
-
-let commonCount =
-    Seq.zip actual guess
-    |> Seq.filter (fun (a, g) -> a <> g)
-    |> Seq.map fst
-    |> Seq.countBy id
-
-Seq.zip actual guess
-|> Seq.map (fun (a, g) ->
-    if a = g then Green
-    elif actual.Contains(g) then Yellow
-    else Grey)
-
-// just have a recursive function that takes care of the common letter (and counts them)
-Seq.zip "treat" "speed"
-|> Seq.filter (fun (a, g) -> a <> g)
-|> Seq.map fst
-|> Seq.filter (fun i -> i = 't')
-|> Seq.length
-
-let actual = "treat"
-let guess = "speed"
 let letters = Seq.zip actual guess |> Seq.toList
 let rec masker ls mask =
     match ls with
@@ -166,13 +143,45 @@ let getMask actual guess =
 
     let letters = Seq.zip actual guess |> Seq.toList     
     masker2 (letters, notMatched) [] |> List.rev 
+
+let getMask2 actual guess =
+    let removeFirstInstance remove fromList =
+        let rec removeFirst predicate = function
+            | [] -> []
+            | h :: t when predicate h -> t //terminates
+            | h :: t -> h :: removeFirst predicate t
+        removeFirst (fun i -> i = remove) fromList
+
+    let getCounts letters matchOn = 
+        letters |> List.filter (fun i -> i = matchOn) |> List.length
+    
+    let rec masker ls count mask =
+        match (ls, count) with
+        | [], _ -> mask
+        | (a, g) :: t, cs ->
+            if a = g then 
+                masker t cs (Green :: mask)
+            else 
+                if Seq.contains g actual && getCounts cs g > 0 then
+                    masker t (removeFirstInstance g cs) (Yellow :: mask)
+                else 
+                    masker t cs (Grey :: mask)
+    
+    let notMatched zipped =
+        zipped
+        |> List.filter (fun (a, g) -> a <> g)
+        |> List.map fst
+
+    let letters = Seq.zip actual guess |> Seq.toList     
+    masker letters (notMatched letters) [] |> List.rev 
+
         //actual //guess
-getMask "favor" "arose"
-getMask "favor" "ratio"
-getMask "favor" "carol"
-getMask "favor" "vapor"
-getMask "arose" "speed"
-getMask "treat" "speed"
+getMask2 "favor" "arose"
+getMask2 "favor" "ratio"
+getMask2 "favor" "carol"
+getMask2 "favor" "vapor"
+getMask2 "arose" "speed"
+getMask2 "treat" "speed"
 
 let rec removeFirst predicate = function
     | [] -> []
