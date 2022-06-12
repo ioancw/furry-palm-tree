@@ -11,23 +11,26 @@ let sortString s =
 let fileName = @"C:\Users\ioan_\GitHub\furry-palm-tree\words.txt"
 
 // load given word list and ensure 5 letter words selected
-let fiveLetterWords = 
-    fileName 
-    |> File.ReadAllLines 
+let fiveLetterWords =
+    fileName
+    |> File.ReadAllLines
     |> Seq.filter (fun w -> w.Length = 5)
+    |> Seq.map (fun s -> sprintf """ "%s" """ s)
+
+File.WriteAllLines (@"C:\Users\ioan_\GitHub\furry-palm-tree\fiveletterwords.txt", fiveLetterWords)
 
 // analysis
-let findMatchingFiveLetterWords word = 
-    let fivemap = 
+let findMatchingFiveLetterWords word =
+    let fivemap =
         fiveLetterWords
         |> Seq.groupBy sortString
         |> Seq.sortByDescending (snd >> Seq.length)
         |> Map.ofSeq
-    match Map.tryFind word fivemap with 
+    match Map.tryFind word fivemap with
     | Some ws -> ws |> Seq.toArray
     | None -> Array.empty
 
-let words = 
+let words =
     fiveLetterWords
     |> Seq.collect string
     |> Seq.groupBy id
@@ -38,20 +41,20 @@ let words =
     |> Seq.sort
     |> Seq.fold (+) ""
     |> findMatchingFiveLetterWords
-    
+
 Array.splitAt 5 words
 
 findMatchingFiveLetterWords ([|"i"; "l"; "t"; "n"; "d"|] |> Seq.sort |> Seq.fold (+) "")
 
 // use this to determine words scores
-let frequencies = 
+let frequencies =
     fiveLetterWords
     |> Seq.collect id
     |> Seq.groupBy id
     |> Seq.map (fun (k, vs) -> k, vs |> Seq.length)
     |> Map.ofSeq
-    
-// work out word scores 
+
+// work out word scores
 let letterScores =
     fiveLetterWords
     |> Seq.map (fun word ->
@@ -60,20 +63,20 @@ let letterScores =
         let freq = word |> Seq.fold (fun state letter -> state + Map.find letter frequencies) 0
         word, freq / multiplier)
     |> Seq.sortByDescending snd
-        
+
 // use the following to find out the next most frequent word that doesn't contain
-// the letters from arose.        
+// the letters from arose.
 let aroseSet = "arose" |> Set.ofSeq
 letterScores
 |> Seq.find (fun (word, _) ->
     let wSet = word |> Set.ofSeq
     aroseSet |> Seq.fold (fun state l -> state || Set.contains l wSet) false |> not)
-   
-// print letter scores        
+
+// print letter scores
 letterScores
 |> Seq.groupBy snd
 |> Seq.map (fun (k, vs) -> k, vs |> Seq.map fst)
-        
+
 let grp = letterScores |> Seq.iter (fun (w, f) -> printfn "%s:%A" w f)
 
 // simulation functions
@@ -84,7 +87,7 @@ type answerMask = Green | Yellow | Grey
 // takes an actual word and a guess and returns an answer mask
 // i.e. actual is 'prose' guess is 'arose' mask is [0,2,2,2,2]
 // this is a litte tricky to get right as you don't want to double count
-//let getAnswerMask actual guess = 
+//let getAnswerMask actual guess =
 
 let actual = "prose"
 let guess = "arose"
@@ -95,7 +98,7 @@ let zipped =
     |> Seq.groupBy id
     |> Seq.map (fun (k, vs) -> snd k, vs |> Seq.length)
     //|> Map.ofSeq
-    
+
 let letters = Seq.zip actual guess |> Seq.toList
 let rec masker ls mask =
     match ls with
@@ -121,7 +124,7 @@ let getMask actual guess =
             | h :: t when predicate h -> t //terminates
             | h :: t -> h :: removeFirst predicate t
         removeFirst (fun i -> i = remove) fromList
-    
+
     let rec masker2 (ls, count) mask =
         match (ls, count) with
         | [], _ -> mask
@@ -132,17 +135,17 @@ let getMask actual guess =
             if Seq.contains g actual && counts > 0 then
                 let newCounts = removeFirstInstance g cs
                 masker2 (t, newCounts) (Yellow :: mask)
-            else 
+            else
                 masker2 (t, cs) (Grey :: mask)
-    
+
     let notMatched =
         Seq.zip actual guess
         |> Seq.filter (fun (a, g) -> a <> g)
         |> Seq.toList
         |> List.map fst
 
-    let letters = Seq.zip actual guess |> Seq.toList     
-    masker2 (letters, notMatched) [] |> List.rev 
+    let letters = Seq.zip actual guess |> Seq.toList
+    masker2 (letters, notMatched) [] |> List.rev
 
 let getMask2 actual guess =
     let removeFirstInstance remove fromList =
@@ -152,28 +155,59 @@ let getMask2 actual guess =
             | h :: t -> h :: removeFirst predicate t
         removeFirst (fun i -> i = remove) fromList
 
-    let getCounts letters matchOn = 
+    let getCounts letters matchOn =
         letters |> List.filter (fun i -> i = matchOn) |> List.length
-    
+
     let rec masker ls count mask =
         match (ls, count) with
         | [], _ -> mask
         | (a, g) :: t, cs ->
-            if a = g then 
+            if a = g then
                 masker t cs (Green :: mask)
-            else 
+            else
                 if Seq.contains g actual && getCounts cs g > 0 then
                     masker t (removeFirstInstance g cs) (Yellow :: mask)
-                else 
+                else
                     masker t cs (Grey :: mask)
-    
+
     let notMatched zipped =
         zipped
         |> List.filter (fun (a, g) -> a <> g)
         |> List.map fst
 
-    let letters = Seq.zip actual guess |> Seq.toList     
-    masker letters (notMatched letters) [] |> List.rev 
+    let letters = Seq.zip actual guess |> Seq.toList
+    masker letters (notMatched letters) [] |> List.rev
+
+let getMask3 actual guess =
+    let removeFirstInstance remove fromList =
+        let rec removeFirst predicate = function
+            | [] -> []
+            | h :: t when predicate h -> t //terminates
+            | h :: t -> h :: removeFirst predicate t
+        removeFirst (fun i -> i = remove) fromList
+
+    let getCounts letters matchOn =
+        letters |> List.filter (fun i -> i = matchOn) |> List.length
+
+    let rec masker ls count mask =
+        match (ls, count) with
+        | [], _ -> mask
+        | (a, g) :: t, cs ->
+            if a = g then
+                masker t cs (Green :: mask)
+            else
+                if Seq.contains g actual && getCounts cs g > 0 then
+                    masker t (removeFirstInstance g cs) (Yellow :: mask)
+                else
+                    masker t cs (Grey :: mask)
+
+    let notMatched zipped =
+        zipped
+        |> List.filter (fun (a, g) -> a <> g)
+        |> List.map fst
+
+    let letters = Seq.zip actual guess |> Seq.toList
+    masker letters (notMatched letters) [] |> List.rev
 
         //actual //guess
 getMask2 "favor" "arose"
@@ -187,7 +221,7 @@ let rec removeFirst predicate = function
     | [] -> []
     | h :: t when predicate h -> t //terminates
     | h :: t -> h :: removeFirst predicate t
-    
+
 let removeFirst2 predicate list =
     let rec loop acc = function
         | [] -> acc
@@ -198,7 +232,7 @@ let removeFirst2 predicate list =
             printfn "%A~%A#%A" h t acc
             loop (h :: acc) t
     loop [] list
-    
+
 removeFirst (fun i -> i = 'b') ['a';'a';'b';'b';'b';'c']
 removeFirst2 (fun i -> i = 'b') ['a';'a';'b';'b';'b';'c']
 
