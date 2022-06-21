@@ -178,36 +178,37 @@ let getMask2 actual guess =
     let letters = Seq.zip actual guess |> Seq.toList
     masker letters (notMatched letters) [] |> List.rev
 
-let getMask3 actual guess =
-    let removeFirstInstance remove fromList =
-        let rec removeFirst predicate = function
-            | [] -> []
-            | h :: t when predicate h -> t //terminates
-            | h :: t -> h :: removeFirst predicate t
-        removeFirst (fun i -> i = remove) fromList
-
-    let getCounts letters matchOn =
-        letters |> List.filter (fun i -> i = matchOn) |> List.length
-
-    let rec masker ls count mask =
-        match (ls, count) with
-        | [], _ -> mask
-        | (a, g) :: t, cs ->
-            if a = g then
-                masker t cs (Green :: mask)
-            else
-                if Seq.contains g actual && getCounts cs g > 0 then
-                    masker t (removeFirstInstance g cs) (Yellow :: mask)
-                else
-                    masker t cs (Grey :: mask)
-
-    let notMatched zipped =
-        zipped
+module Counter =
+    let createCounter items =
+        items
         |> List.filter (fun (a, g) -> a <> g)
         |> List.map fst
+        |> List.countBy id
+        |> Map.ofList
+
+    let countOf counter item =
+        match Map.tryFind item counter with
+        | Some c -> c
+        | None -> 0
+
+    let updateCount counter item =
+        match Map.tryFind item counter with
+        | Some c -> Map.add item (c - 1) counter
+        | None -> counter
+
+let getMask3 actual guess =
 
     let letters = Seq.zip actual guess |> Seq.toList
-    masker letters (notMatched letters) [] |> List.rev
+
+    let folder ((count, mask): Map<'a,int> * answerMask list) (a, g) =
+        if a = g then
+            count, Green :: mask
+        elif Seq.contains g actual && Counter.countOf count g > 0 then
+            Counter.updateCount count g, Yellow :: mask
+        else
+            count, Grey :: mask
+
+    List.fold folder (Counter.createCounter letters, []) letters |> snd |> List.rev
 
         //actual //guess
 getMask2 "favor" "arose"
@@ -216,6 +217,13 @@ getMask2 "favor" "carol"
 getMask2 "favor" "vapor"
 getMask2 "arose" "speed"
 getMask2 "treat" "speed"
+
+getMask3 "favor" "arose"
+getMask3 "favor" "ratio"
+getMask3 "favor" "carol"
+getMask3 "favor" "vapor"
+getMask3 "arose" "speed"
+getMask3 "treat" "speed"
 
 let rec removeFirst predicate = function
     | [] -> []
