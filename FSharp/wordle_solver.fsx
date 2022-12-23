@@ -8,16 +8,13 @@ let rec listToString l =
 let sortString s =
     s |> Seq.sort |> Seq.toList |> listToString
 
-let fileName = @"C:\Users\ioan_\GitHub\furry-palm-tree\words.txt"
+let fileName = @"/Users/ioanwilliams/github/furry-palm-tree/words.txt"
 
 // load given word list and ensure 5 letter words selected
 let fiveLetterWords =
     fileName
     |> File.ReadAllLines
     |> Seq.filter (fun w -> w.Length = 5)
-    |> Seq.map (fun s -> sprintf """ "%s" """ s)
-
-File.WriteAllLines (@"C:\Users\ioan_\GitHub\furry-palm-tree\fiveletterwords.txt", fiveLetterWords)
 
 // analysis
 let findMatchingFiveLetterWords word =
@@ -30,19 +27,19 @@ let findMatchingFiveLetterWords word =
     | Some ws -> ws |> Seq.toArray
     | None -> Array.empty
 
-let words =
-    fiveLetterWords
-    |> Seq.collect string
-    |> Seq.groupBy id
-    |> Seq.map (fun (k, vs) -> string k, vs |> Seq.length)
-    |> Seq.sortByDescending snd
-    |> Seq.take 10
-    |> Seq.map fst
-    |> Seq.sort
-    |> Seq.fold (+) ""
-    |> findMatchingFiveLetterWords
+// let words =
+//     fiveLetterWords
+//     |> Seq.collect string
+//     |> Seq.groupBy id
+//     |> Seq.map (fun (k, vs) -> string k, vs |> Seq.length)
+//     |> Seq.sortByDescending snd
+//     |> Seq.take 10
+//     |> Seq.map fst
+//     |> Seq.sort
+//     |> Seq.fold (+) ""
+//     |> findMatchingFiveLetterWords
 
-Array.splitAt 5 words
+// Array.splitAt 5 words
 
 findMatchingFiveLetterWords ([|"i"; "l"; "t"; "n"; "d"|] |> Seq.sort |> Seq.fold (+) "")
 
