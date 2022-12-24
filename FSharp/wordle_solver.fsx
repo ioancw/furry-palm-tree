@@ -51,6 +51,17 @@ let frequencies =
     |> Seq.map (fun (k, vs) -> k, vs |> Seq.length)
     |> Map.ofSeq
 
+let letterPositionFrequency  = 
+    fiveLetterWords
+    |> Seq.map (fun w -> w.ToCharArray() |> Array.indexed)
+    |> Seq.collect id
+    |> Seq.groupBy fst
+    |> Seq.map (fun (p, cs) -> p, cs |> Seq.countBy snd |> Seq.sortByDescending snd)
+
+let filterFrequenciesOn letter = 
+    letterPositionFrequency
+    |> Seq.map (fun (p, cs) -> cs |> Seq.filter (fun (l, _) -> l = letter))
+
 // work out word scores
 let letterScores =
     fiveLetterWords
