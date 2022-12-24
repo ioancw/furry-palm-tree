@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>aoc_22</RootNamespace>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Library.fs" />
+        <None Include="Day1\day1.fsx" />
+        <Content Include="Day1\d1_1.txt" />
+        <Content Include="Day2\d2_1.txt" />
+        <None Include="Day2\day2.fsx" />
+        <Content Include="Day3\day3_1.txt" />
+        <None Include="Day3\day3.fsx" />
+        <None Include="Day4\Day4.fsx" />
+        <None Include="Day5\Day5.fsx" />
+        <None Include="Day6\Day6.fsx" />
+    </ItemGroup>
+
+</Project>
