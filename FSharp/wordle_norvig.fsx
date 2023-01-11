@@ -56,7 +56,7 @@ let scoreGuess actual guess =
 
 result |> List.map colourToString |> String.concat
 
-let wordList = File.ReadAllLines(@"../Python/wordle-small.txt")
+let wordList = File.ReadAllLines(@"../../Python/wordle-small.txt")
 
 let check left right = left = right
 
@@ -87,8 +87,7 @@ let play guesser wordList target =
         let reply = scoreGuess target guess
         let targets = consistentTargets guess reply state.Targets
         let stateReply = defaultArg state.Reply ""
-        do printfn "Guess %d: %s, Reply: %s:%s Remaining targets: %d: %A"
-               state.Turn guess reply stateReply (Seq.length targets) targets 
+        do printfn $"Guess %d{state.Turn}: %s{guess}, Reply: %s{reply}:%s{stateReply} Remaining targets: %d{Seq.length targets}: %A{targets}" 
         if reply = correct
         then {state with Targets = targets; Won = true; Reply = Some reply}
         else {state with Turn = turn; Targets = targets; Reply = Some reply}
@@ -132,6 +131,7 @@ let partitionsCount guess targets =
 partition "ROAST" few
 partition "NINJA" few |> partitionsToCount
 
+// Now use a tree structure to hold the guesses
 type Word = string
 type Reply = string
 
@@ -140,8 +140,6 @@ type Tree =
     | Word of Word
 and Node = {Guess: Word; Size: int; Branches: Map<string, Tree>}
     
-let targets = few
-
 // metric function takes an int seq and returns a float or int
 
 let rec minimisingTree metric targets =
@@ -155,49 +153,9 @@ let rec minimisingTree metric targets =
               Size = Seq.length targets
               Branches =  branches |> Map.map (fun _ -> minimisingTree metric)})
         
-let rec iter word node tree =
-    let recurse = iter word node
-    match tree with
-    | Word w -> word w
-    | Node n ->
-        node (n.Guess, n.Size)
-        n.Branches |> Map.iter (fun k -> recurse)
-        
-minimisingTree Seq.max few
-|> iter (printfn "%s") (printfn "%A")
-
-let rec listelements tree =
-    let printNode n =
-        printfn ""
-        printf "%A " (n.Guess, n.Size)
-        n.Branches |> Map.iter (fun k -> listelements)
-    match tree with
-    | Word leaf         -> printf " %s" leaf
-    | Node n ->
-        printNode n
-        printfn ""
-    
 let initialTree = minimisingTree Seq.max wordList
 
-let treeGuesser' reply targets =
-    //targets |> Seq.item (random.Next(Seq.length targets)) 
-    let mutable tree = initialTree
-    tree <-
-        match reply with
-        | None -> tree
-        | Some r ->
-            match tree with
-            | Word w -> Word w
-            | Node n ->
-                printfn "Reply: %s" r
-                let b = n.Branches.[r]
-                //printfn "*%A" b
-                b
-    match tree with
-    | Node n -> n.Guess
-    | _ -> "ERROR"
-
-// this takes way to long ont the first set of branches.
+// this takes way too long ont the first set of branches.
 // maybe some memoization of the reply function would help?
 let onTheFlyMinimisingTree metric targets =
     if Seq.length targets = 1 then
@@ -216,11 +174,10 @@ play onTheFlyGuesser wordList (Some "SKIRT")
 //Now let's try to use the play function, but instead of the existing one, we change
 //the state function so that it maintain the current set of tree branches.
 //we pre calculate the graph and then walk the graph and store either the word or the branches left
+type State2 = {Turn: int; Targets: string seq; Won: bool; Reply: string option; Tree: Tree}
 
-type State2 = {Turn: int; Targets: string seq; Won: bool; Reply: string option; Nodes: Tree}
-let fullTree = minimisingTree Seq.max wordList
 let play2 guesser wordList target = 
-    let initialState = {Turn = 0; Targets = wordList; Won = false; Reply = None; Nodes = fullTree}
+    let initialState = {Turn = 1; Targets = wordList; Won = false; Reply = None; Tree = initialTree}
     
     let target =
         match target with
@@ -228,15 +185,13 @@ let play2 guesser wordList target =
         | None -> wordList |> Seq.item (random.Next(Seq.length wordList)) 
     
     let folder state turn =
-        let guess, newNode = guesser state.Reply state.Targets state.Nodes
+        let guess, newNode = guesser state.Reply state.Tree
         let reply = scoreGuess target guess
         let targets = consistentTargets guess reply state.Targets
-        let stateReply = defaultArg state.Reply ""
-        do printfn "Guess %d: %s, Reply: %s:%s Remaining targets: %d: %A"
-               state.Turn guess reply stateReply (Seq.length targets) targets 
+        do printfn $"Guess %d{state.Turn}: %s{guess}, Reply: %s{reply} Remaining targets: %d{Seq.length targets}: %A{targets}" 
         if reply = correct
-            then {state with Targets = targets; Won = true; Reply = Some reply; Nodes = newNode}
-            else {state with Turn = turn; Targets = targets; Reply = Some reply; Nodes = newNode}
+            then {state with Targets = targets; Won = true; Reply = Some reply; Tree = newNode}
+            else {state with Turn = turn + 1; Targets = targets; Reply = Some reply; Tree = newNode}
 
     let rec loop state xs =
         match xs with
@@ -246,16 +201,32 @@ let play2 guesser wordList target =
             if newState.Won then newState else loop newState t
     loop initialState [1 .. 10]
 
-let treeGuesser reply targets node = 
+let treeGuesser reply tree = 
     let emptyNode = {Guess = String.Empty; Size = 0; Branches = Map.empty}
-    let guess, newNode = 
-        match reply with 
-        | None -> node.Guess, node
-        | Some reply -> 
-            let x = node.Branches.[reply]
-            match x with 
-            | Word w -> w, emptyNode 
-            | Node n -> n.Guess, n
-    guess, newNode
-        
+    match reply with
+    | None ->
+        match tree with
+        | Word w -> w, Node emptyNode
+        | Node n -> n.Guess, Node n
+    | Some reply ->
+        match tree with 
+        | Word w -> w, Node emptyNode 
+        | Node n ->
+            match n.Branches[reply] with
+            | Word w -> w, Node emptyNode
+            | Node n -> n.Guess, Node n
+    
+let target = "LEMON"
+let g1, t1 = treeGuesser None initialTree
+let g2, t2  = treeGuesser (scoreGuess target g1 |> Some) t1
+
+let n1 = treeGuesser (scoreGuess "LEMON" "AROSE" |> Some) initialTree
+let n2 = treeGuesser (scoreGuess "LEMON" (fst n1) |> Some) initialTree
+
+scoreGuess "SKIRT" "ARISE"
+scoreGuess "EXTRA" "AROSE"
+
+play2 treeGuesser wordList (Some "EXTRA")
+play2 treeGuesser wordList (Some "OPERA")
+play2 treeGuesser wordList None 
     
