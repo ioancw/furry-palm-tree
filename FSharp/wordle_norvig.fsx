@@ -13,8 +13,6 @@ let colourToString colour =
 
 let correct = "GGGGG"
 
-let result = [Green; Yellow; Grey; Green; Grey]
-
 module String =
     let concat = List.fold (+) ""
 
@@ -36,6 +34,7 @@ module Counter =
         | Some c -> Map.add item (c - 1) counter
         | None -> counter
 
+/// Scores a guess against and actual word.
 let scoreGuess actual guess =
 
     let letters = Seq.zip actual guess |> Seq.toList
@@ -53,8 +52,6 @@ let scoreGuess actual guess =
     |> List.rev
     |> List.map colourToString
     |> String.concat
-
-result |> List.map colourToString |> String.concat
 
 let wordList = File.ReadAllLines(@"../../Python/wordle-small.txt")
 
@@ -74,6 +71,7 @@ type State = {Turn: int; Targets: string seq; Won: bool; Reply: string option}
 
 let guesser reply targets = Seq.head targets
 
+/// Basic guesser that doesn't work with a tree
 let play guesser wordList target = 
     let initialState = {Turn = 0; Targets = wordList; Won = false; Reply = None}
     
@@ -176,6 +174,7 @@ play onTheFlyGuesser wordList (Some "SKIRT")
 //we pre calculate the graph and then walk the graph and store either the word or the branches left
 type State2 = {Turn: int; Targets: string seq; Won: bool; Reply: string option; Tree: Tree}
 
+// Better play game, that maintains in it's the state the tree.
 let play2 guesser wordList target = 
     let initialState = {Turn = 1; Targets = wordList; Won = false; Reply = None; Tree = initialTree}
     
@@ -203,6 +202,7 @@ let play2 guesser wordList target =
 
 let treeGuesser reply tree = 
     let emptyNode = {Guess = String.Empty; Size = 0; Branches = Map.empty}
+    // There is no reply on the first go, so we must handle this case.
     match reply with
     | None ->
         match tree with
@@ -228,5 +228,7 @@ scoreGuess "EXTRA" "AROSE"
 
 play2 treeGuesser wordList (Some "EXTRA")
 play2 treeGuesser wordList (Some "OPERA")
-play2 treeGuesser wordList None 
+play2 treeGuesser wordList None
+
+
     
