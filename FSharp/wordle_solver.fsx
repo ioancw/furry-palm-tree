@@ -55,6 +55,7 @@ let findMatchingFiveLetterWords word =
 
 findMatchingFiveLetterWords ([|"i"; "l"; "t"; "n"; "d"|] |> Seq.sort |> Seq.fold (+) "")
 
+<<<<<<< HEAD
 ["words"; "arose"; "rings"; "walks"] 
 |> Seq.map (fun w -> w.ToCharArray() |> Array.indexed)
 |> Seq.collect id
@@ -72,6 +73,10 @@ let letterPositionFrequency (words: string seq) =
 
 fiveLetterWords |> letterPositionFrequency
 
+=======
+let x = ['a';'e';'z';'y']
+x |> List.map (fun l -> if List.contains l ['a'; 'e'; 'i'; 'o'; 'u'] then true else false)
+>>>>>>> 118043914019d4cee892eb57a19b786d9c5b9868
 
 // use this to determine words scores
 let frequencies =
@@ -79,6 +84,33 @@ let frequencies =
     |> Seq.collect id
     |> Seq.countBy id
     |> Map.ofSeq
+
+let letterPositionFrequency  = 
+    fiveLetterWords
+    |> Seq.map (fun w -> w.ToCharArray() |> Array.indexed)
+    |> Seq.collect id
+    |> Seq.groupBy fst
+    |> Seq.map (fun (p, cs) -> p, cs |> Seq.countBy snd |> Seq.sortByDescending snd)
+
+let filterFrequenciesOn letter = 
+    letterPositionFrequency
+    |> Seq.map (fun (p, cs) -> cs |> Seq.filter (fun (l, _) -> l = letter))
+
+let filterFrequenciesPositionOn letter (position: int) = 
+    letterPositionFrequency
+    |> Seq.map (fun (p, cs) -> 
+        if (p - 1) = position then 
+            cs |> Seq.filter (fun (l, _) -> l = letter)
+        else cs)
+    |> Seq.toList
+
+let letterPositionFrequencyFilter position letter = 
+    fiveLetterWords
+    |> Seq.map (fun w -> w.ToCharArray() |> Array.indexed)
+    |> Seq.filter (fun cs -> cs[position - 1] |> snd = letter)
+    |> Seq.collect id
+    |> Seq.groupBy fst
+    |> Seq.map (fun (p, cs) -> p, cs |> Seq.countBy snd |> Seq.sortByDescending snd)
 
 // work out word scores
 let letterScores =
