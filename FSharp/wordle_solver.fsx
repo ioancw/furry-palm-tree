@@ -8,13 +8,25 @@ let rec listToString l =
 let sortString s =
     s |> Seq.sort |> Seq.toList |> listToString
 
-let fileName = @"/Users/ioanwilliams/github/furry-palm-tree/words.txt"
+let fileName = @"../words.txt"
 
 // load given word list and ensure 5 letter words selected
 let fiveLetterWords =
     fileName
     |> File.ReadAllLines
     |> Seq.filter (fun w -> w.Length = 5)
+
+ |> Seq.chunkBySize 100 |> Seq.map Seq.last |> Seq.toList
+
+let everyNth n seq = 
+  seq 
+  |> Seq.indexed              // Add index to element
+  |> Seq.filter (fun (i, el) -> i % n = n - 1) // Take every nth element
+  |> Seq.map snd
+
+everyNth 100 fiveLetterWords |> Seq.toList
+
+fiveLetterWords |> Seq.indexed
 
 // analysis
 let findMatchingFiveLetterWords word =
@@ -43,15 +55,34 @@ let findMatchingFiveLetterWords word =
 
 findMatchingFiveLetterWords ([|"i"; "l"; "t"; "n"; "d"|] |> Seq.sort |> Seq.fold (+) "")
 
+<<<<<<< HEAD
+["words"; "arose"; "rings"; "walks"] 
+|> Seq.map (fun w -> w.ToCharArray() |> Array.indexed)
+|> Seq.collect id
+|> Seq.groupBy fst
+|> Seq.map (fun (p, cs) -> p, cs |> Seq.countBy snd |> Seq.sortByDescending snd)
+
+
+let letterPositionFrequency (words: string seq) = 
+    words
+    |> Seq.map (fun w -> w.ToCharArray() |> Array.indexed)
+    |> Seq.collect id
+    |> Seq.groupBy fst
+    |> Seq.map (fun (p, cs) -> p, cs |> Seq.countBy snd |> Seq.sortByDescending snd)
+
+
+fiveLetterWords |> letterPositionFrequency
+
+=======
 let x = ['a';'e';'z';'y']
 x |> List.map (fun l -> if List.contains l ['a'; 'e'; 'i'; 'o'; 'u'] then true else false)
+>>>>>>> 118043914019d4cee892eb57a19b786d9c5b9868
 
 // use this to determine words scores
 let frequencies =
     fiveLetterWords
     |> Seq.collect id
-    |> Seq.groupBy id
-    |> Seq.map (fun (k, vs) -> k, vs |> Seq.length)
+    |> Seq.countBy id
     |> Map.ofSeq
 
 let letterPositionFrequency  = 
@@ -94,11 +125,19 @@ let letterScores =
 // use the following to find out the next most frequent word that doesn't contain
 // the letters from arose.
 let aroseSet = "arose" |> Set.ofSeq
+let next = 
+    letterScores
+    |> Seq.find (fun (word, _) ->
+        let wSet = word |> Set.ofSeq
+        aroseSet |> Seq.fold (fun state l -> state || Set.contains l wSet) false |> not)
+
 letterScores
 |> Seq.find (fun (word, _) ->
-    let wSet = word |> Set.ofSeq
-    aroseSet |> Seq.fold (fun state l -> state || Set.contains l wSet) false |> not)
-
+    Set.intersect aroseSet (word |> Set.ofSeq)
+    |> Set.count |> (fun count -> count = 0))
+    
+    
+    
 // print letter scores
 letterScores
 |> Seq.groupBy snd
@@ -237,6 +276,20 @@ let getMask3 actual guess =
 
     List.fold folder (Counter.createCounter letters, []) letters |> snd |> List.rev
 
+
+let norvigWords = File.ReadAllLines @"wordle-small.txt"
+
+let norvigShort = norvigWords |> Seq.tail |> Seq.chunkBySize 100 |> Seq.map Seq.last |> Seq.toList
+
+let partitions = 
+    norvigShort 
+    |> List.groupBy (fun a -> getMask3 a "NINJA")
+    |> List.map (fun (m, ws) -> Seq.length ws)
+    |> List.sortDescending
+    |> List.rev 
+// aim to guess a word that partitions the possible remaining targets into small branches
+// we want to know the size of each branch rather than the list of words.
+
         //actual //guess
 getMask2 "favor" "arose"
 getMask2 "favor" "ratio"
@@ -270,5 +323,52 @@ let removeFirst2 predicate list =
 
 removeFirst (fun i -> i = 'b') ['a';'a';'b';'b';'b';'c']
 removeFirst2 (fun i -> i = 'b') ['a';'a';'b';'b';'b';'c']
+
+//memoization
+type private 'a wrapper = {value: 'a}
+let memoizeHashMT (f: 'a -> 'b) : ('a -> 'b) = 
+    let cache = System.Collections.Generic.Dictionary()
+
+    fun x ->
+        let key = {value = x}
+        let value = 
+            lock cache <| fun () ->
+                match cache.TryGetValue key with 
+                | false, _ ->
+                    let y = lazy f x 
+                    cache.[key] <- y 
+                    y
+                | true, v -> v
+        value.Value
+
+// Put null values inside a non-null wrapper.
+// Save memory by skipping wrapper for non-null values
+
+type private NullDictionaryKey = | NullDictionaryKey
+
+let private boxNoNulls (x: 'a) : obj = 
+    match box x with 
+    | null -> box NullDictionaryKey 
+    | x -> x 
+
+let private unboxNoNulls (x: obj) : 'a = 
+    match x with 
+    | :? NullDictionaryKey -> unbox null 
+    | :? 'a as x -> x 
+    | _ -> failwith "Memoization hash error"
+
+let memoizeHash (f: 'a -> 'b) : ('a -> 'b) = 
+    let cache = System.Collections.Hashtable()
+    fun x -> 
+        let k = boxNoNulls x 
+        match cache.[k] with 
+        | null ->
+            let y = f x 
+            lock cache (fun () -> cache.[k] <- boxNoNulls y)
+            y 
+        | v -> unboxNoNulls v 
+
+
+let memoize = memoizeHash
 
 
