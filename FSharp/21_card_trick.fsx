@@ -15,10 +15,7 @@ open System
 let shuffle (r: Random) xs = xs |> Seq.sortBy (fun _ -> r.Next())
 
 let cards21 deck =
-    deck
-    |> shuffle (Random())
-    |> Seq.take 21
-    |> Seq.toList
+    deck |> shuffle (Random()) |> Seq.take 21 |> Seq.toList
 
 let pile n =
     seq { (n - 1) .. 3 .. 21 - 1 } |> Seq.toList
@@ -39,7 +36,7 @@ let getPiles (deck: (string * string) list) =
     (p1, p2, p3)
 
 let printPiles (p1: (string * string) list) (p2: (string * string) list) (p3: (string * string) list) =
-    for i in [ 0 .. 6 ] do
+    for i in [ 0..6 ] do
         printfn
             "%s of %s : %s of %s : %s of %s"
             (fst p1.[i])
@@ -51,26 +48,9 @@ let printPiles (p1: (string * string) list) (p2: (string * string) list) (p3: (s
     |> ignore
 
 let ranks =
-    [ "A"
-      "1"
-      "2"
-      "3"
-      "4"
-      "5"
-      "6"
-      "7"
-      "8"
-      "9"
-      "10"
-      "J"
-      "Q"
-      "K" ]
+    [ "A"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "10"; "J"; "Q"; "K" ]
 
-let suits =
-    [ "\u2665"
-      "\u2663"
-      "\u2666"
-      "\u2660" ]
+let suits = [ "\u2665"; "\u2663"; "\u2666"; "\u2660" ]
 
 let deck =
     [ for card in ranks do
@@ -94,26 +74,9 @@ let rec simulateGame (deck: (string * string) list) =
 
 let runGame =
     let ranks =
-        [ "A"
-          "1"
-          "2"
-          "3"
-          "4"
-          "5"
-          "6"
-          "7"
-          "8"
-          "9"
-          "10"
-          "J"
-          "Q"
-          "K" ]
+        [ "A"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "10"; "J"; "Q"; "K" ]
 
-    let suits =
-        [ "\u2665"
-          "\u2663"
-          "\u2666"
-          "\u2660" ]
+    let suits = [ "\u2665"; "\u2663"; "\u2666"; "\u2660" ]
 
     let deck =
         [ for card in ranks do
@@ -150,11 +113,7 @@ type Rank =
     | Jack
 
     static member GetAllRanks() =
-        [ yield Ace
-          for i in 2 .. 10 -> Value i
-          yield Jack
-          yield Queen
-          yield King ]
+        [ yield Ace; for i in 2..10 -> Value i; yield Jack; yield Queen; yield King ]
 
 //record type to combine a Suit and a Rank
 type Card = { Suit: Suit; Rank: Rank }
@@ -191,10 +150,7 @@ let printCards () =
 let shuffleFunc (r: Random) xs = xs |> Seq.sortBy (fun _ -> r.Next())
 
 let getnRandomCards n deck =
-    deck
-    |> shuffleFunc (Random())
-    |> Seq.take n
-    |> Seq.toList
+    deck |> shuffleFunc (Random()) |> Seq.take n |> Seq.toList
 
 let deal21cards = getnRandomCards 21 fullDeck
 
@@ -223,7 +179,7 @@ let getPilesC (deck: Card list) =
 let p1C, p2C, p3C = getPilesC deal21cards
 
 let printPilesC (p1: Card list) (p2: Card list) (p3: Card list) =
-    for i in [ 0 .. 6 ] do
+    for i in [ 0..6 ] do
         printfn $"%s{printCard p1.[i]} : %s{printCard p2.[i]} : %s{printCard p3.[i]}"
     |> ignore
 

@@ -14,7 +14,8 @@ module Program =
         Program.mkProgram (init >> convert) (fun msg model -> update msg model |> convert) view
 
 
-let description = "count-o-matic
+let description =
+    "count-o-matic
 Press Space to start, pause or resume
 Press Enter to step while in pause.
 Press +/- to increase/decrease speed while running.
@@ -46,8 +47,10 @@ let init (running, interval) =
           Interval = interval }
 
     model,
-    Orders [ StartKeyListener
-             if running then DelayTick 0 ]
+    Orders
+        [ StartKeyListener
+          if running then
+              DelayTick 0 ]
 
 let update msg model =
     match msg, model.Running with
@@ -55,17 +58,15 @@ let update msg model =
     | Toggle, false ->
         let model' =
             { model with
-                  Running = true
-                  Count = model.Count + 1 }
+                Running = true
+                Count = model.Count + 1 }
 
-        model',
-        Orders [ Print(model.Count + 1)
-                 DelayTick model.Interval ]
+        model', Orders [ Print(model.Count + 1); DelayTick model.Interval ]
     | Toggle, true -> { model with Running = false }, CancelDelayedTick
     | KeyboardTick, false -> { model with Count = model.Count + 1 }, Print(model.Count + 1)
     | ChangeInterval x, true ->
         { model with
-              Interval = model.Interval + x |> min 2500 |> max 50 },
+            Interval = model.Interval + x |> min 2500 |> max 50 },
         NoOrder
     | KeyboardTick, true
     | ChangeInterval _, false
@@ -82,8 +83,7 @@ let rec execute order dispatch =
                     (Console.ReadKey true).KeyChar
             }
             |> Seq.takeWhile (fun key -> key <> 'q' && key <> 'Q')
-            |> Seq.iter
-                (function
+            |> Seq.iter (function
                 | ' ' -> dispatch Toggle
                 | '\013' -> dispatch KeyboardTick
                 | '-' ->
@@ -95,7 +95,7 @@ let rec execute order dispatch =
             Async.CancelDefaultToken()
         }
         |> Async.StartImmediate
-    | Print value -> Console.Write value  
+    | Print value -> Console.Write value
     | DelayTick delay ->
         async {
             do! Async.Sleep delay

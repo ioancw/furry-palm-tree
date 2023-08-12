@@ -2,19 +2,20 @@ open System.Collections.Generic
 open System.IO
 
 let divideIntoEquivalenceClasses keyf seq =
-    let dict =
-        Dictionary<'key, ResizeArray<'T>>(HashIdentity.Structural)
+    let dict = Dictionary<'key, ResizeArray<'T>>(HashIdentity.Structural)
 
     seq
     |> Seq.iter (fun v ->
         let key = keyf v
         let ok, value = dict.TryGetValue(key)
+
         if ok then
             value.Add(v) //add item to existing list
         else
             let prev = new ResizeArray<'T>()
             dict.[key] <- prev
             prev.Add(v))
+
     dict
 
 let rec convertListToString l =
@@ -25,8 +26,7 @@ let rec convertListToString l =
 let sortString s =
     s |> Seq.sort |> Seq.toList |> convertListToString
 
-let fileName =
-    @"/Users/ioanwilliams/github/furry-palm-tree/words.txt"
+let fileName = @"/Users/ioanwilliams/github/furry-palm-tree/words.txt"
 
 let anagramDict =
     divideIntoEquivalenceClasses sortString (File.ReadAllLines fileName)
@@ -44,6 +44,7 @@ let printTopN (anagrams: Dictionary<string, ResizeArray<'T>>) n =
 printTopN anagramDict 10
 
 open System.IO
+
 let data =
     (File.ReadAllLines fileName)
     |> Array.groupBy sortString
